@@ -97,7 +97,7 @@ export type SettingsScope = "personal";
 /**
  * Agent kind stored on ``Settings.agent_settings.agent_kind``.
  *
- * - ``"openhands"`` (default): the conversation runs through OpenHands' built-in
+ * - ``"openhands"`` (default): the conversation runs through Zeshan' built-in
  *   LLM-driven Agent. The other agent_settings fields (``llm``, ``condenser``,
  *   ``mcp_config``, ``tools``) apply.
  * - ``"acp"``: the conversation is driven by an external ACP subprocess

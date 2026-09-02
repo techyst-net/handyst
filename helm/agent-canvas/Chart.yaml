@@ -1,7 +1,7 @@
 apiVersion: v2
 name: agent-canvas
 description: |
-  Helm chart for running the OpenHands agent-canvas all-in-one image
+  Helm chart for running the Zeshan agent-canvas all-in-one image
   (frontend + agent-server + automation) as a StatefulSet with persistent
   storage, ingress, and optional cluster RBAC.
 type: application
@@ -15,14 +15,14 @@ version: 0.1.0
 # hand; the trailing annotation is what marks this line for replacement.
 appVersion: "1.16.0" # x-release-please-version
 kubeVersion: ">=1.24.0-0"
-home: https://github.com/OpenHands/OpenHands
+home: https://github.com/Zeshan/Zeshan
 sources:
-  - https://github.com/OpenHands/OpenHands
+  - https://github.com/Zeshan/Zeshan
 keywords:
   - openhands
   - agent
   - ai
   - agent-canvas
 maintainers:
-  - name: OpenHands
-    url: https://github.com/OpenHands
+  - name: Zeshan
+    url: https://github.com/Zeshan

@@ -23,7 +23,7 @@ describe("isLoopbackAppUrl", () => {
     "http://localhost@evil.com/",
     "http://127.0.0.1@evil.com/",
     // Remote hosts and non-http schemes.
-    "https://openhands.dev/",
+    "https://zeshan.local",
     "http://192.168.1.10:8000/",
     "file:///etc/passwd",
     "javascript:alert(1)",

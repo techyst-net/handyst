@@ -252,7 +252,7 @@ OPTIONS:
                                frontend can populate the agent's
                                <RUNTIME_SERVICES> system-prompt block without
                                VITE_RUNTIME_SERVICES_INFO baked in.
-  --lock-to-cloud <cloud-url>  Lock backend setup to a single OpenHands Cloud
+  --lock-to-cloud <cloud-url>  Lock backend setup to a single Zeshan Cloud
                                URL. Hides manual/local backend setup and the
                                custom Cloud URL field in the pre-built frontend.
   --disable-telemetry          Disable all product telemetry (including the
@@ -323,7 +323,7 @@ ROUTING:
  *   when `VITE_RUNTIME_SERVICES_INFO` is empty, so static builds (Docker /
  *   published binary) still populate the agent's `<RUNTIME_SERVICES>` block.
  *
- * - `lockToCloud`: an OpenHands Cloud URL exposed as
+ * - `lockToCloud`: an Zeshan Cloud URL exposed as
  *   `window.__AGENT_CANVAS_LOCK_TO_CLOUD__`. Read by `getLockedCloudHost()` in
  *   `agent-server-config.ts` so pre-built frontend bundles can hide manual
  *   backend setup and the custom Cloud URL field at runtime.

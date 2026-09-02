@@ -116,7 +116,7 @@ function isKnownAcpModel(
 
 /**
  * Variant-specific AgentProfile fields derived from the form state. The
- * OpenHands branch omits `llm_profile_ref` — the profile editor supplies it.
+ * Zeshan branch omits `llm_profile_ref` — the profile editor supplies it.
  */
 export type AgentProfileFieldsDraft =
   | {
@@ -163,7 +163,7 @@ export interface AgentProfileFieldsInput {
  * ACP: a built-in provider on its default command stores **no** explicit
  * command (``acp_command: null`` — the profile resolver falls back to the
  * provider default); a customized or ``custom`` command is stored verbatim as a
- * shell string. OpenHands: reuses the schema-driven ``tool_concurrency_limit``
+ * shell string. Zeshan: reuses the schema-driven ``tool_concurrency_limit``
  * coercion, which **throws** on invalid input (callers catch at save time). A
  * blank concurrency field always emits an explicit value (the schema default
  * when the coercion is empty) rather than omitting the key — the profile
@@ -289,7 +289,7 @@ export function AgentSettingsScreen({
     settings?.agent_settings_schema,
   );
 
-  // --- Sub-agents (OpenHands path) ---
+  // --- Sub-agents (Zeshan path) ---
   const fields = React.useMemo(
     () => schema?.sections.flatMap((section) => section.fields),
     [schema],
@@ -307,7 +307,7 @@ export function AgentSettingsScreen({
     initialSubAgentsEnabled,
   );
 
-  // --- LLM switching tool (OpenHands path) ---
+  // --- LLM switching tool (Zeshan path) ---
   // Surfaced only when the backend schema exposes the field, so older
   // agent-servers that predate ``enable_switch_llm_tool`` hide it cleanly.
   const switchLlmToolField = fields?.find(
@@ -333,7 +333,7 @@ export function AgentSettingsScreen({
     Boolean(switchLlmToolField) &&
     (!embedded || switchLlmToolSupportedOnProfile);
 
-  // --- Parallel tool calls (OpenHands path) ---
+  // --- Parallel tool calls (Zeshan path) ---
   // Surfaced only when the backend schema exposes the field, so older
   // agent-servers that predate ``tool_concurrency_limit`` hide it cleanly.
   const toolConcurrencyField = fields?.find(
@@ -609,7 +609,7 @@ export function AgentSettingsScreen({
         },
       );
     } else {
-      // OpenHands path: save agent_kind + sub-agents toggle + the LLM-switching
+      // Zeshan path: save agent_kind + sub-agents toggle + the LLM-switching
       // toggle + parallel tool calls
       const agentSettingsDiff: Record<string, SettingsValue> = {
         agent_kind: "openhands",
@@ -665,7 +665,7 @@ export function AgentSettingsScreen({
     }
   };
 
-  // Sub-agents field metadata for OpenHands section
+  // Sub-agents field metadata for Zeshan section
   const subAgentsLabel = subAgentsField
     ? resolveSchemaFieldLabel(t, subAgentsField.key, subAgentsField.label)
     : t(I18nKey.SCHEMA$ENABLE_SUB_AGENTS$LABEL);
@@ -677,7 +677,7 @@ export function AgentSettingsScreen({
       )
     : t(I18nKey.SCHEMA$ENABLE_SUB_AGENTS$DESCRIPTION);
 
-  // LLM-switching field metadata for OpenHands section
+  // LLM-switching field metadata for Zeshan section
   const switchLlmToolLabel = switchLlmToolField
     ? resolveSchemaFieldLabel(
         t,

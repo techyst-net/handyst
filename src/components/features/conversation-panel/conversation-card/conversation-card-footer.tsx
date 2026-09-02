@@ -33,14 +33,14 @@ interface ConversationCardFooterProps {
   /**
    * Whether to render the agent/model chip. Wired to the conversation
    * panel's "LLM model" toggle; gates the chip uniformly
-   * for both ACP and OpenHands cards.
+   * for both ACP and Zeshan cards.
    */
   showAgentChip?: boolean;
   /**
    * High-level kind of the conversation's agent. Drives the chip's icon:
-   * the OpenHands logo for native conversations and the resolved ACP brand
+   * the Zeshan logo for native conversations and the resolved ACP brand
    * mark for ACP conversations. Defensive against stray ``acpServer``
-   * values reaching an OpenHands card.
+   * values reaching an Zeshan card.
    */
   agentKind?: "openhands" | "acp" | null;
   /**
@@ -92,7 +92,7 @@ export function ConversationCardFooter({
 
   // Single inline chip per conversation: [brand mark] {model text}. Gated by
   // the conversation panel's "LLM model" toggle and applied
-  // uniformly to both kinds — OpenHands shows the logo + ``agent.llm.model``;
+  // uniformly to both kinds — Zeshan shows the logo + ``agent.llm.model``;
   // ACP shows the provider brand mark + model resolved through PR 730's
   // adapter chain, falling back to the provider display name when no model is
   // available so the chip never collapses to icon-only.
@@ -169,7 +169,7 @@ export function ConversationCardFooter({
             className={CONVERSATION_CARD_META_CHIP_CLASSNAME}
             title={chip.tooltip}
           >
-            {/* Same line-height slot as tag chips; width flexes for the wider OpenHands mark. */}
+            {/* Same line-height slot as tag chips; width flexes for the wider Zeshan mark. */}
             <span
               className="inline-flex h-4 shrink-0 items-center justify-center [&_svg]:block"
               aria-hidden

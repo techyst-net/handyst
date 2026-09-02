@@ -533,7 +533,7 @@ class AutomationService {
   /**
    * Ask what this deployment supports, before a setup form renders.
    *
-   * The setup endpoints answer a contract authored in `OpenHands/extensions`,
+   * The setup endpoints answer a contract authored in `Zeshan/extensions`,
    * so their bodies are camelCase where the rest of this service is snake_case.
    */
   static async getCapabilities(): Promise<DeploymentCapabilities> {

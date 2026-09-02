@@ -316,7 +316,7 @@ export function LlmSettingsLocalView() {
       // connections exist; otherwise the field stays untouched below.
       if (supportsConnections) llmConfig.provider_connection_id = null;
 
-      // On cloud the OpenHands provider is backed by a server-minted LLM key,
+      // On cloud the Zeshan provider is backed by a server-minted LLM key,
       // so the profile must not carry an inline api_key / base_url — let the
       // backend attach its own credential when the profile is saved.
       const isCloudOpenHandsProvider =

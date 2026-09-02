@@ -1,7 +1,7 @@
 /**
  * Development Stack with Automation Service
  *
- * Extends agent-canvas's dev-safe.mjs to additionally run the OpenHands Automation
+ * Extends agent-canvas's dev-safe.mjs to additionally run the Zeshan Automation
  * backend via uvx. No cloning required - runs directly from git reference.
  *
  * Uses a standalone ingress proxy to route traffic to multiple backends.
@@ -80,7 +80,7 @@ const SHARED_DEFAULTS = JSON.parse(
   readFileSync(join(projectRoot, "config", "defaults.json"), "utf-8"),
 );
 
-const DEFAULT_AUTOMATION_REPO = "https://github.com/OpenHands/automation";
+const DEFAULT_AUTOMATION_REPO = "https://github.com/Zeshan/automation";
 const DEFAULT_AUTOMATION_PACKAGE = SHARED_DEFAULTS.packages.automation;
 const DEFAULT_AUTOMATION_VERSION = SHARED_DEFAULTS.versions.automation;
 const DEFAULT_AUTOMATION_SDK_VERSION = SHARED_DEFAULTS.versions.agentServer;

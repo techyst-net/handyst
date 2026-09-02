@@ -20,7 +20,7 @@ export const JSON_VIEW_THEME = {
 };
 
 export const PRODUCT_URL = {
-  PRODUCTION: "https://app.all-hands.dev",
+  PRODUCTION: "https://zeshan.local",
 };
 
 export const SETTINGS_FORM = {

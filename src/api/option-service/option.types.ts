@@ -9,7 +9,7 @@ import { Provider } from "#/types/settings";
 export interface ModelsResponse {
   /** Flat list of ``provider/model`` strings (bare names already prefixed). */
   models: string[];
-  /** Model names (without provider) that OpenHands has verified to work well. */
+  /** Model names (without provider) that Zeshan has verified to work well. */
   verified_models: string[];
   /** Provider names shown in the "Verified" section of the model selector. */
   verified_providers: string[];

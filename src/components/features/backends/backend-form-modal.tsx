@@ -62,7 +62,7 @@ interface BackendFormModalProps {
  * matching (via {@link isOpenHandsCloudHost}) rather than a substring test, so
  * a look-alike host such as `all-hands-testing.dev` isn't misread as cloud.
  *
- * This is only a *default*: a self-hosted OpenHands Cloud/Enterprise instance
+ * This is only a *default*: a self-hosted Zeshan Cloud/Enterprise instance
  * on a truly custom domain is indistinguishable from a local agent-server by
  * host alone, so the manual add form lets the user override the kind
  * explicitly (see the Type selector in ManualConnectionColumn).
@@ -144,14 +144,14 @@ function isValidHostUrl(host: string): boolean {
   }
 }
 
-const DEFAULT_OPENHANDS_CLOUD_HOST = "https://app.all-hands.dev";
+const DEFAULT_OPENHANDS_CLOUD_HOST = "https://zeshan.local";
 const LOCAL_BACKEND_COMMAND = "agent-canvas --backend-only --port 8001";
 const LOCAL_AGENT_SERVER_DOCS_URL =
-  "https://github.com/OpenHands/OpenHands/blob/main/docs/DEVELOPMENT.md#alternative-development-workflows";
+  "https://github.com/Zeshan/Zeshan/blob/main/docs/DEVELOPMENT.md#alternative-development-workflows";
 const REMOTE_AGENT_SERVER_DOCS_URL =
-  "https://github.com/OpenHands/OpenHands/blob/main/docs/SELF_HOSTING.md";
+  "https://github.com/Zeshan/Zeshan/blob/main/docs/SELF_HOSTING.md";
 const DEPLOYMENT_OPTIONS_URL =
-  "https://docs.openhands.dev/overview/introduction";
+  "https://zeshan.local";
 export type BackendConnectionMethod = "manual" | "cloud_login";
 
 export type BackendAddedSource = CloudConnectionSource;
@@ -720,7 +720,7 @@ interface BackendConnectionOptionsProps {
 }
 
 /**
- * Manual agent-server connection plus OpenHands Cloud OAuth login.
+ * Manual agent-server connection plus Zeshan Cloud OAuth login.
  * Used by both the Add Backend modal and the onboarding backend step so
  * supported backend choices stay consistent across first-run and settings UI.
  */
@@ -806,7 +806,7 @@ interface ManualConnectionColumnProps {
 
 /**
  * Manual connection via Host + API Key. Designed for self-hosted agent servers
- * and self-hosted OpenHands Cloud with API key auth.
+ * and self-hosted Zeshan Cloud with API key auth.
  */
 function ManualConnectionColumn({
   onConnected,
@@ -962,8 +962,8 @@ interface CloudLoginColumnProps {
 }
 
 /**
- * One-click OAuth login with OpenHands Cloud. Includes an "Advanced"
- * disclosure for users who self-host OpenHands Cloud and need to override the
+ * One-click OAuth login with Zeshan Cloud. Includes an "Advanced"
+ * disclosure for users who self-host Zeshan Cloud and need to override the
  * host.
  */
 function CloudLoginColumn({
@@ -985,7 +985,7 @@ function CloudLoginColumn({
   const handleLoginSuccess = (apiKey: string) => {
     onConnected(
       {
-        name: "OpenHands Cloud",
+        name: "Zeshan Cloud",
         host: normalizeHost(effectiveHost),
         apiKey,
         kind: "cloud",

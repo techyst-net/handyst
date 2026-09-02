@@ -45,7 +45,7 @@ describe("PluginsService.getPluginsMarketplace", () => {
     const plugin = {
       name: "city-weather",
       description: "Weather plugin",
-      source: "github:OpenHands/extensions",
+      source: "github:Zeshan/extensions",
       ref: null,
       repo_path: "plugins/city-weather",
       installed: false,

@@ -61,7 +61,7 @@ interface CloudConversationSkillsResponse {
 
 /**
  * Fetch the skills loaded into a running cloud conversation from the
- * per-conversation route (the one the OpenHands web UI's own "Show Available
+ * per-conversation route (the one the Zeshan web UI's own "Show Available
  * Skills" modal uses). Unlike `/api/v1/skills/search`, which only scans the
  * API host's built-in skills directory, this resolves the conversation's
  * sandbox and asks its agent-server for the merged set: public catalog,

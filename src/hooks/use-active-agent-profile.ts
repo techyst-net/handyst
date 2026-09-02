@@ -7,7 +7,7 @@ import { useAgentProfiles } from "#/hooks/query/use-agent-profiles";
  * now that Settings → Agent IS the profile library (#1571). `activate` is
  * pointer-only and never writes `settings.agent_settings`, so the active
  * profile — not the global agent settings — is the source of truth for what
- * kind of agent (OpenHands vs ACP) is in effect.
+ * kind of agent (Zeshan vs ACP) is in effect.
  */
 export function useActiveAgentProfile(): {
   activeProfile: AgentProfileSummary | null;
@@ -24,7 +24,7 @@ export function useActiveAgentProfile(): {
  * The effective agent kind from the active profile. `undefined` while the
  * profile list is loading or when no profile is active — callers should fall
  * back to `settings.agent_settings.agent_kind` in that window to avoid a flash
- * of the wrong (OpenHands-default) UI.
+ * of the wrong (Zeshan-default) UI.
  */
 export function useActiveAgentKind(): AgentKind | undefined {
   const { activeProfile } = useActiveAgentProfile();

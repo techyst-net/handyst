@@ -15,11 +15,11 @@ import { cn } from "#/utils/utils";
  * Icons the conversation chip + onboarding tiles can render. Strictly broader
  * than {@link ACPProviderIcon} — that type covers ACP CLI subprocesses only
  * (Claude Code, Codex, Gemini, generic terminal fallback), whereas this type
- * additionally includes the native OpenHands harness.
+ * additionally includes the native Zeshan harness.
  */
 export type AgentBrandIconKind = "openhands" | ACPProviderIcon;
 
-// The OpenHands wordmark renders at a 3:2 (width:height) ratio. Kept as a
+// The Zeshan wordmark renders at a 3:2 (width:height) ratio. Kept as a
 // named constant so the conversation chip and the onboarding tile (24×16)
 // stay visually identical — see ``AgentOptionIcon`` in choose-agent-step.tsx.
 const OPENHANDS_LOGO_ASPECT_RATIO = 3 / 2;

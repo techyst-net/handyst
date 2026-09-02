@@ -51,7 +51,7 @@ interface DeviceFlowAuthProps {
 /**
  * Device Flow authentication UI component.
  *
- * Shows a "Connect to OpenHands" button that initiates OAuth 2.0 Device Flow
+ * Shows a "Connect to Zeshan" button that initiates OAuth 2.0 Device Flow
  * authentication. Displays status during the auth process and auto-opens
  * the browser for user authorization.
  */

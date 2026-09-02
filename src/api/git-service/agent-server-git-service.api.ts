@@ -36,7 +36,7 @@ interface AgentServerGitCommitsPage {
  * In **local** mode the runtime is reachable directly from the browser
  * (it's `127.0.0.1:18000`); the SDK's `RemoteWorkspace` calls land
  * fine. In **cloud** mode the runtime is at
- * `*.prod-runtime.all-hands.dev`, which doesn't allow CORS from
+ * `*.zeshan.local`, which doesn't allow CORS from
  * `localhost`. So cloud-mode calls hit the cloud API's
  * `GET /api/v1/app-conversations/{id}/git/{changes,diff}` proxy
  * endpoints instead — the server resolves the conversation's runtime

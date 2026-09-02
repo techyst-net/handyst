@@ -17,7 +17,7 @@ import type {
 
 /**
  * Cloud-mode REST calls are split between two upstream hosts (matching
- * OpenHands' cloud frontend):
+ * Zeshan' cloud frontend):
  *
  *   - **App API** (`backend.host`, default in `callCloudProxy`):
  *     event *history* (`/api/v1/conversation/{id}/events/search`).
@@ -113,7 +113,7 @@ class EventService {
       // sandbox. Path is singular `conversation` and v1-prefixed.
       //
       // Full pagination params (sort_order, page_id, timestamp filters)
-      // require the server-side fix from OpenHands/OpenHands#14399. If
+      // require the server-side fix from Zeshan/Zeshan#14399. If
       // the cloud backend hasn't been updated yet, the timestamp filters
       // trigger a 500 (str-vs-datetime comparison). We attempt the full
       // request first and fall back to a limit-only request on failure.
@@ -157,7 +157,7 @@ class EventService {
         console.warn(
           "[EventService] Cloud backend doesn't support pagination filters. " +
             "Falling back to initial load only. " +
-            "Server needs OpenHands/OpenHands#14399.",
+            "Server needs Zeshan/Zeshan#14399.",
         );
         return { items: [], next_page_id: null };
       }

@@ -66,7 +66,7 @@ function classifyGemini(out: BashOutput): AcpAuthStatus {
 }
 
 // Per-provider login detection, keyed by ``acp_server`` / OnboardingAgentId.
-// Providers absent here (OpenHands, custom, unknown) report ``unknown``.
+// Providers absent here (Zeshan, custom, unknown) report ``unknown``.
 const ACP_AUTH_PROBES: Record<string, AcpAuthProbe> = {
   "claude-code": {
     command: "claude auth status --json",

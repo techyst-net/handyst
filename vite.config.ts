@@ -301,7 +301,7 @@ export default defineConfig(({ mode }) => {
         "@xterm/addon-fit",
         "@xterm/xterm",
         "@xterm/xterm/css/xterm.css",
-        // OpenHands typescript client
+        // Zeshan typescript client
         "@openhands/typescript-client",
         "@openhands/typescript-client/client/http-client",
         "@openhands/typescript-client/client/device-flow-client",

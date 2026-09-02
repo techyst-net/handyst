@@ -18,7 +18,7 @@ interface UseAgentProfilesOptions {
  * GET of an empty store the backend lazily seeds one default profile mirroring
  * the user's prior config (#3719), so the list is never empty for an upgrading
  * user. Works on both local and cloud backends — `AgentProfilesService` routes
- * cloud calls through the cloud proxy (OpenHands #15060).
+ * cloud calls through the cloud proxy (Zeshan #15060).
  */
 export function useAgentProfiles(options: UseAgentProfilesOptions = {}) {
   const { backend, orgId } = useActiveBackend();

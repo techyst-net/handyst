@@ -19,7 +19,7 @@ export const ONBOARDING_AGENT_PROFILE_NAME =
 
 /**
  * Configure and activate the onboarding agent profile from the user's choices:
- * an OpenHands profile pointing at the LLM profile onboarding just created, or
+ * an Zeshan profile pointing at the LLM profile onboarding just created, or
  * an ACP profile for the chosen provider (which owns its own LLM — no key).
  *
  * Best-effort: a failure (e.g. an older backend without `/api/agent-profiles`)

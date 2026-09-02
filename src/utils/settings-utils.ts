@@ -61,7 +61,7 @@ export function getFirstAvailablePath(
   featureFlags: WebClientFeatureFlags | undefined,
 ): string | null {
   // ``/settings/agents`` (the Agent Profile library — the "Agent" page) always
-  // wins: it is where the agent is defined (OpenHands / ACP, via the active
+  // wins: it is where the agent is defined (Zeshan / ACP, via the active
   // profile) and is always available regardless of feature flags. Landing here
   // keeps routing simple — every user lands where the agent is chosen, and
   // the LLM page is one nav-click away.

@@ -12,7 +12,7 @@ export interface AgentServerFormDefaults {
 // server (`scripts/static-server.mjs`) and its tests reference the literal
 // string directly, not this constant.
 const LOCK_TO_CLOUD_WINDOW_KEY = "__AGENT_CANVAS_LOCK_TO_CLOUD__";
-const LEGACY_CLOUD_DOMAIN = "all-hands.dev";
+const LEGACY_CLOUD_DOMAIN = "zeshan.local";
 const CURRENT_CLOUD_DOMAIN = "openhands.dev";
 const LEGACY_PRODUCTION_APP_HOST = `app.${LEGACY_CLOUD_DOMAIN}`;
 const CURRENT_PRODUCTION_APP_HOST = CURRENT_CLOUD_DOMAIN;
@@ -157,7 +157,7 @@ export function getLockedCloudHost(): string | null {
 /**
  * Compare a backend host against the locked Cloud host, normalizing
  * trailing slashes, protocol, and case so that e.g.
- * `https://app.all-hands.dev/` matches `https://app.all-hands.dev`.
+ * `https://zeshan.local` matches `https://zeshan.local`.
  *
  * Used by the locked-to-Cloud gates (`root.tsx`,
  * `onboarding-modal.tsx`) to decide whether the active backend is the

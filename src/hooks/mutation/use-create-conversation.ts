@@ -94,7 +94,7 @@ export const useCreateConversation = () => {
 
       // The active AgentProfile is the default launch profile for new
       // conversations (#3727), on both local and cloud (cloud gained
-      // /api/agent-profiles in OpenHands #15060, #3730). Await the list from
+      // /api/agent-profiles in Zeshan #15060, #3730). Await the list from
       // the shared query cache: a send fired before the home query resolves
       // must still launch from the active profile. Do not fall back to the
       // global agent_settings when profile discovery fails: activation is
@@ -139,7 +139,7 @@ export const useCreateConversation = () => {
         resolvedAgentProfile?.name === WELL_KNOWN_DEFAULT_AGENT_PROFILE_NAME &&
         resolvedAgentProfile?.agent_kind === "openhands"
       ) {
-        // The seeded OpenHands `default` profile is the enriched baseline, not a
+        // The seeded Zeshan `default` profile is the enriched baseline, not a
         // deliberate profile pick — it mirrors global agent_settings. Launch it
         // via agent_settings so the canvas-only enrichments the profile-resolution
         // path drops survive for the common home-launch: the <RUNTIME_SERVICES>
@@ -149,9 +149,9 @@ export const useCreateConversation = () => {
         // Trade-off: per-profile fields set on `default` itself don't apply on
         // home-launch — custom per-profile config belongs in a named profile.
         //
-        // Scoped to OpenHands: an ACP `default` must keep the profile path.
+        // Scoped to Zeshan: an ACP `default` must keep the profile path.
         // Activation is pointer-only, so global agent_settings is stale (often
-        // still OpenHands) when an ACP profile is active — launching it via
+        // still Zeshan) when an ACP profile is active — launching it via
         // agent_settings would start the wrong agent. ACP carries no
         // <RUNTIME_SERVICES> enrichment, so there's nothing to preserve.
         //
@@ -283,7 +283,7 @@ export const useCreateConversation = () => {
           .filter((plugin) => !seen.has(pluginReferenceKey(plugin)));
         attachedPlugins = [...explicitPlugins, ...enabledInstalled];
       }
-      // A launch from a named OpenHands profile runs that profile's
+      // A launch from a named Zeshan profile runs that profile's
       // `llm_profile_ref`, which can differ from the standalone active LLM
       // profile — stamp the ref so the switcher pill names the exact profile
       // the conversation runs (#1082). The agent_settings paths (the `default`
@@ -312,7 +312,7 @@ export const useCreateConversation = () => {
         });
       }
 
-      // OpenHands cloud pattern: when the start task isn't immediately
+      // Zeshan cloud pattern: when the start task isn't immediately
       // READY (cloud sandbox is still provisioning),
       // app_conversation_id is null. We return a `task-{id}` URL so the
       // conversation route's useTaskPolling can drive it to READY and

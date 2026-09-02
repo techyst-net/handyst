@@ -19,7 +19,7 @@ import {
 } from "./events/index";
 
 /**
- * Union type representing all possible OpenHands events.
+ * Union type representing all possible Zeshan events.
  * This includes all main event types that can occur in the system.
  */
 export type OpenHandsEvent =

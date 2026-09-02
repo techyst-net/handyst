@@ -1,6 +1,6 @@
 # agent-canvas Helm chart
 
-Helm chart for running the [OpenHands agent-canvas](https://github.com/OpenHands/OpenHands)
+Helm chart for running the [Zeshan agent-canvas](https://github.com/Zeshan/Zeshan)
 all-in-one image (frontend + agent-server + automation) on Kubernetes as a
 `StatefulSet` with persistent storage, an `Ingress`, and optional in-cluster
 RBAC.
@@ -28,7 +28,7 @@ want:
 Put it behind an authenticated ingress before exposing it to the internet (see
 the [Security](#security) notes).
 
-## Relationship to OpenHands Enterprise
+## Relationship to Zeshan Enterprise
 
 Agent Canvas is an **unauthenticated, single-tenant** application. This chart
 runs exactly that: **one** shared instance where all agents are comingled on
@@ -36,7 +36,7 @@ the same pod and PVC, with no built-in auth, RBAC for users, or tenant
 isolation. It's well suited to a single team or individual running their own
 backend.
 
-[OpenHands Enterprise (OHE)](https://www.all-hands.ai/enterprise) is the
+[Zeshan Enterprise (OHE)](https://www.all-hands.ai/enterprise) is the
 productized upgrade path when you need a hardened, multi-user deployment. OHE
 adds:
 
@@ -200,7 +200,7 @@ namespace as trusted infrastructure:
   prefer scoping to specific namespaces via `rbac.namespaces`.
 
 For authentication, role-based access control, multi-tenancy, and isolated
-agent sandboxes, see [OpenHands Enterprise](#relationship-to-openhands-enterprise).
+agent sandboxes, see [Zeshan Enterprise](#relationship-to-openhands-enterprise).
 
 ## Uninstall
 

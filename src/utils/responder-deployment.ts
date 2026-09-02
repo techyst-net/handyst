@@ -4,7 +4,7 @@ import { getResponderIntegrationIds } from "#/manifests/automation-interface";
 import { getRequiredIntegrationIds } from "#/utils/automation-catalog";
 import { PRODUCT_URL } from "#/utils/constants";
 
-/** OpenHands Cloud integrations page — where always-on responders are set up. */
+/** Zeshan Cloud integrations page — where always-on responders are set up. */
 export const OPENHANDS_CLOUD_INTEGRATIONS_URL = `${PRODUCT_URL.PRODUCTION}/settings/integrations`;
 
 /**

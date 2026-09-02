@@ -55,7 +55,7 @@ const installedPlugin = {
   version: "1.0.0",
   description: "A demo plugin",
   enabled: true,
-  source: "github:OpenHands/extensions",
+  source: "github:Zeshan/extensions",
   resolved_ref: null,
   repo_path: "plugins/demo-plugin",
   installed_at: "2026-06-01T00:00:00Z",
@@ -96,13 +96,13 @@ describe("PluginsManagementService", () => {
     installPlugin.mockResolvedValue(installedPlugin);
 
     await PluginsManagementService.installPlugin({
-      source: "github:OpenHands/extensions",
+      source: "github:Zeshan/extensions",
       ref: "main",
       repo_path: "plugins/demo-plugin",
     });
 
     expect(installPlugin).toHaveBeenCalledWith({
-      source: "github:OpenHands/extensions",
+      source: "github:Zeshan/extensions",
       ref: "main",
       repo_path: "plugins/demo-plugin",
     });

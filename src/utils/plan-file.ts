@@ -39,7 +39,7 @@ export const PLAN_STRUCTURE_TEXT = [
   "   * This section should describe what success looks like — expected outputs, behaviors, or conditions.",
 ].join("\n");
 
-// System-prompt suffix for the local planning agent (mirrors the OpenHands
+// System-prompt suffix for the local planning agent (mirrors the Zeshan
 // app-server's PLANNING_AGENT_INSTRUCTION). The planner's directive + boundaries
 // live in the system prompt; the planning conversation is created idle, so the
 // user types the first message themselves and nothing is injected into the chat.

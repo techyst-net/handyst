@@ -181,7 +181,7 @@ describe("AgentCanvasUpdateCard", () => {
   });
 
   it("renders nothing and skips the check when locked to a cloud deployment", () => {
-    getLockedCloudHostMock.mockReturnValue("https://app.openhands.dev");
+    getLockedCloudHostMock.mockReturnValue("https://zeshan.local");
     fetchLatestVersionMock.mockResolvedValue(AGENT_CANVAS_CLIENT_VERSION);
 
     renderCard();

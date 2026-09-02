@@ -287,7 +287,7 @@ export function buildRuntimeServicesSystemSuffix(
   if (automation?.url_from_agent) {
     lines.push(
       `* Automation backend: ${automation.url_from_agent}`,
-      `    ${automation.description ?? "OpenHands Automations service."}`,
+      `    ${automation.description ?? "Zeshan Automations service."}`,
     );
     if (automation.docs_url) {
       lines.push(`    Docs:    ${automation.docs_url}`);
@@ -354,7 +354,7 @@ export function toAppConversation(
   // switching, so surfacing this string is display-only.
   const isAcp = info.agent?.kind === "ACPAgent";
   // Only surface ``acp_server`` for ACP conversations even if the wire
-  // payload accidentally carries an ``acpserver`` tag on an OpenHands
+  // payload accidentally carries an ``acpserver`` tag on an Zeshan
   // conversation — the chip is identity info for the ACP CLI subprocess,
   // and showing it on a non-ACP conversation would be a lie. Fall back to the
   // agent's own ``acp_server`` (#3692) when the tag is missing — a profile
@@ -837,7 +837,7 @@ function buildAgentContext(
 
   // The bundled catalog is allow-listed, not deny-listed: it is a build-time
   // snapshot of ~60 skills, so a deny-list puts every future addition into
-  // every system prompt (OpenHands#16302). Skills the agent context already
+  // every system prompt (Zeshan#16302). Skills the agent context already
   // carries are user-authored and stay opt-out. A skill the opening message
   // invokes by name overrides both, for this conversation only.
   const mergedSkills = [
@@ -995,7 +995,7 @@ function buildConfiguredOpenHandsAgentSettings(
   }
   // ``acp_env`` is no longer a forwarded ACP setting (provider creds ride the
   // Secrets panel), but a legacy value may linger on persisted settings —
-  // scrub it so it never leaks onto the OpenHands payload.
+  // scrub it so it never leaks onto the Zeshan payload.
   delete agentSettings.acp_env;
 
   return {
@@ -1212,7 +1212,7 @@ export function buildStartConversationRequest(
     // (terminal/file_editor/task_tracker) and public-skill loading are the
     // server/SDK's responsibility to restore on the profile path — tracked in
     // software-agent-sdk#3967 (profile resolution must attach the default
-    // toolset + public skills, else a profile-launched OpenHands agent has only
+    // toolset + public skills, else a profile-launched Zeshan agent has only
     // Finish/Think). The dev ``RUNTIME_SERVICES`` system-message suffix remains
     // agent-settings-only; the Canvas UI tool is a top-level client tool and
     // therefore works on both inline-agent and profile launch paths.
@@ -1350,7 +1350,7 @@ export function buildStartPlanningConversationRequest(options: {
   const planPath = buildPlanPath(options.workingDir);
 
   // Put the planner's directive + boundaries in the system prompt (matching the
-  // OpenHands app-server's PLANNING_AGENT_INSTRUCTION), preserving any suffix
+  // Zeshan app-server's PLANNING_AGENT_INSTRUCTION), preserving any suffix
   // buildAgentContext already set (e.g. the runtime-services block).
   const agentContext = buildAgentContext(
     agentSettings,

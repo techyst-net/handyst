@@ -62,7 +62,7 @@ function getPlannerAgentContextSkillNames(payload: {
 }
 
 describe("buildStartConversationRequest", () => {
-  it("marks OpenHands start requests as encrypted when MCP headers are encrypted", () => {
+  it("marks Zeshan start requests as encrypted when MCP headers are encrypted", () => {
     const agentSettings = {
       agent_kind: "openhands",
       llm: {
@@ -273,7 +273,7 @@ describe("buildStartConversationRequest", () => {
     expect(payload.secrets_encrypted).toBeUndefined();
   });
 
-  it("ships only allow-listed catalog skills to a OpenHands conversation context", () => {
+  it("ships only allow-listed catalog skills to a Zeshan conversation context", () => {
     const settings = makeSettings({
       agent_kind: "openhands",
       llm: {
@@ -301,7 +301,7 @@ describe("buildStartConversationRequest", () => {
     expect(skillNames).toContain("enabled-custom");
     // No `enabled_skills` on the settings means the curated default applies:
     // `add-skill` is flagged `defaultEnabled` in the catalog, `add-javadoc` is
-    // not, and shipping every catalog skill is what OpenHands#16302 reported.
+    // not, and shipping every catalog skill is what Zeshan#16302 reported.
     expect(skillNames).toContain("add-skill");
     expect(skillNames).not.toContain("add-javadoc");
 
@@ -338,7 +338,7 @@ describe("buildStartConversationRequest", () => {
     expect(skillNames).toContain("enabled-custom");
     // No `enabled_skills` on the settings means the curated default applies:
     // `add-skill` is flagged `defaultEnabled` in the catalog, `add-javadoc` is
-    // not, and shipping every catalog skill is what OpenHands#16302 reported.
+    // not, and shipping every catalog skill is what Zeshan#16302 reported.
     expect(skillNames).toContain("add-skill");
     expect(skillNames).not.toContain("add-javadoc");
 

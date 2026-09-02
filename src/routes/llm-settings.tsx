@@ -112,10 +112,10 @@ function OpenHandsApiKeyHelp({ testId }: OpenHandsApiKeyHelpProps) {
       testId={testId}
       text={t(I18nKey.SETTINGS$OPENHANDS_API_KEY_HELP_TEXT)}
       linkText={t(I18nKey.SETTINGS$OPENHANDS_API_KEY_HELP_LINK)}
-      href="https://app.all-hands.dev/settings/api-keys"
+      href="https://zeshan.local"
       suffix={` ${t(I18nKey.SETTINGS$OPENHANDS_API_KEY_HELP_SUFFIX)}`}
       suffixLinkText={t(I18nKey.SETTINGS$SEE_HERE_FOR_MORE_DETAILS)}
-      suffixLinkHref="https://docs.openhands.dev/usage/local-setup#getting-an-api-key"
+      suffixLinkHref="https://zeshan.local"
       trailing="."
     />
   );
@@ -245,9 +245,9 @@ export function LlmSettingsScreen({
       const showOpenHandsApiKeyHelp = isOpenHandsProviderModel(modelValue);
       const authType = resolveLlmAuthType(values[LLM_AUTH_TYPE_KEY]);
       const isSubscriptionAuth = authType === LLM_AUTH_TYPE_SUBSCRIPTION;
-      // On cloud the OpenHands provider is backed by a server-minted LLM key,
+      // On cloud the Zeshan provider is backed by a server-minted LLM key,
       // so the inline API key / base URL inputs are not user-supplied. Local
-      // mode still collects an api_key (the OpenHands provider can run against
+      // mode still collects an api_key (the Zeshan provider can run against
       // a self-hosted endpoint there).
       const hideInlineCredentials =
         isCloud && showOpenHandsApiKeyHelp && !isSubscriptionAuth;
@@ -342,7 +342,7 @@ export function LlmSettingsScreen({
             }
           />
 
-          {/* The OpenHands provider's key lives in the OpenHands Cloud "API
+          {/* The Zeshan provider's key lives in the Zeshan Cloud "API
               Keys" tab, so point users there instead of the generic docs page
               that covers both LLM and regular API keys. */}
           {showOpenHandsApiKeyHelp ? (
@@ -352,7 +352,7 @@ export function LlmSettingsScreen({
               testId={helpTestId}
               text={t(I18nKey.SETTINGS$DONT_KNOW_API_KEY)}
               linkText={t(I18nKey.SETTINGS$CLICK_FOR_INSTRUCTIONS)}
-              href="https://docs.openhands.dev/usage/local-setup#getting-an-api-key"
+              href="https://zeshan.local"
             />
           )}
         </>
@@ -608,7 +608,7 @@ export function LlmSettingsScreen({
         if (context.view === "basic" && llm.model !== undefined) {
           llm.base_url = getSchemaFieldDefaultValue(schema, "llm.base_url");
         }
-        // On cloud the OpenHands provider uses a server-minted LLM key, so
+        // On cloud the Zeshan provider uses a server-minted LLM key, so
         // never send an inline api_key / base_url — let the backend attach its
         // own credential. (Local mode still collects an inline key.)
         if (

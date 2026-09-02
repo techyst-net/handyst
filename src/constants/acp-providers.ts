@@ -352,7 +352,7 @@ export function getAcpPreferredDefaultModel(
  * a ``CLAUDE_CODE_OAUTH_TOKEN`` breaks the token's bearer auth, which the forms
  * surface via {@link getAcpCredentialConflicts}.
  *
- * Returns ``[]`` for OpenHands, the ``"custom"`` preset, any unknown key, and a
+ * Returns ``[]`` for Zeshan, the ``"custom"`` preset, any unknown key, and a
  * future OAuth-only provider whose registry entry has no ``api_key_env_var`` —
  * callers treat an empty list as "no credentials step for this provider".
  */
@@ -490,7 +490,7 @@ export function buildAcpAgentSettingsDiff(
   } = {},
 ): Record<string, unknown> | null {
   if (providerKey === "openhands") {
-    // Switching back to OpenHands. The agent-server's ``Settings.update``
+    // Switching back to Zeshan. The agent-server's ``Settings.update``
     // applies a fresh ``{'agent_kind': ...}`` base whenever the kind
     // flips, so any ``acp_*`` fields would be discarded before
     // validation. Send the kind alone.

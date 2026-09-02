@@ -68,7 +68,7 @@ function toAgentSettingsOverride(
 /**
  * AgentProfilesLocalView mirrors {@link LlmSettingsLocalView}: a list of the
  * user's Agent profiles, with a create/edit view that reuses the existing Agent
- * settings form (embedded) plus a profile name and — for OpenHands profiles —
+ * settings form (embedded) plus a profile name and — for Zeshan profiles —
  * an LLM-profile picker. Available on local backends only.
  */
 export function AgentProfilesLocalView() {
@@ -328,7 +328,7 @@ export function AgentProfilesLocalView() {
         onSaveControlChange={setSaveControl}
       />
 
-      {/* OpenHands profiles reference an LLM profile (required). */}
+      {/* Zeshan profiles reference an LLM profile (required). */}
       {isOpenHands &&
         (llmProfiles.length > 0 ? (
           <SettingsDropdownInput

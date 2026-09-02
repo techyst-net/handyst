@@ -45,7 +45,7 @@ export const VSCODE_BASE_PATH = SHARED_DEFAULTS.paths.vscodeBasePath;
 const DEFAULT_VITE_PORT = 3001;
 const DEFAULT_WAIT_TIMEOUT_MS = 30_000;
 const DEFAULT_AGENT_SERVER_PACKAGE = SHARED_DEFAULTS.packages.agentServer;
-const AGENT_SERVER_GIT_REPO = "https://github.com/OpenHands/software-agent-sdk";
+const AGENT_SERVER_GIT_REPO = "https://github.com/Zeshan/software-agent-sdk";
 const LOCAL_AGENT_SERVER_SUBDIRS = [
   "openhands-agent-server",
   "openhands-sdk",
@@ -820,7 +820,7 @@ export function buildAgentServerEnv(config, options = {}) {
     OH_SESSION_API_KEYS_0: config.sessionApiKey,
     // Alias for the agent-server's own URL. The agent-server itself sets
     // OH_INTERNAL_SERVER_URL at startup, but downstream consumers (the
-    // OpenHands SDK boilerplate emitted by automation prompt/plugin
+    // Zeshan SDK boilerplate emitted by automation prompt/plugin
     // presets) read AGENT_SERVER_URL — the canonical SDK name. Mirror it
     // here so automation runs work without each tarball having to know
     // about the OH_-prefixed variant.
