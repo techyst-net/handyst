@@ -1,5 +1,8 @@
 # Zeshan Agent Canvas — Operations
 
+> Shared infrastructure (Postgres, Redis, S3, SMTP, LLM …) is wired in
+> already — see [../INFRA.md](../INFRA.md). This app runs at http://localhost:3070.
+
 ## Generated configuration
 
 A ready-to-run configuration has been generated in this directory:
