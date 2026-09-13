@@ -32,13 +32,8 @@ vi.mock("#/context/navigation-context", () => ({
   useNavigation: () => ({ navigate: vi.fn(), currentPath: "/" }),
 }));
 
-vi.mock("#/hooks/use-automation-permissions", () => ({
-  useAutomationPermissions: () => ({
-    canView: true,
-    canManage: true,
-    isLoading: false,
-  }),
-  useIsAutomationOwner: () => true,
+vi.mock("#/hooks/use-has-permission", () => ({
+  useHasPermission: () => true,
 }));
 
 // The pinned package predates the `impact` field, so an entry carrying one is

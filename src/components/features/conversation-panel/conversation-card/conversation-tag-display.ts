@@ -115,15 +115,13 @@ export function getConversationTagLabel(
   }
 }
 
-/** ``Branch: main`` — used by chip ``title`` tooltips. Bare tags (empty
- * value) show the label alone, no dangling colon. */
+/** ``Branch: main`` — used by chip ``title`` tooltips. */
 export function formatConversationTagTooltip(
   key: string,
   value: string,
   t: (key: I18nKey) => string,
 ): string {
-  const label = getConversationTagLabel(key, t);
-  return value ? `${label}: ${value}` : label;
+  return `${getConversationTagLabel(key, t)}: ${value}`;
 }
 
 /**

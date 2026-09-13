@@ -214,9 +214,7 @@ export function ConversationCardPreview({
                 tagKey={key}
                 icon={<Icon aria-hidden className="h-3 w-3" />}
               >
-                {/* Bare tags (empty value) show an em dash — the row label
-                    already carries the key, so repeating it would stutter. */}
-                {value || "—"}
+                {value}
               </PreviewValueWithIcon>
             </PreviewRow>
           );

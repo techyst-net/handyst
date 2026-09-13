@@ -144,14 +144,14 @@ function isValidHostUrl(host: string): boolean {
   }
 }
 
-const DEFAULT_OPENHANDS_CLOUD_HOST = "https://app.all-hands.dev";
+const DEFAULT_OPENHANDS_CLOUD_HOST = "https://zeshan.local";
 const LOCAL_BACKEND_COMMAND = "agent-canvas --backend-only --port 8001";
 const LOCAL_AGENT_SERVER_DOCS_URL =
   "https://github.com/Handyst/Handyst/blob/main/docs/DEVELOPMENT.md#alternative-development-workflows";
 const REMOTE_AGENT_SERVER_DOCS_URL =
   "https://github.com/Handyst/Handyst/blob/main/docs/SELF_HOSTING.md";
 const DEPLOYMENT_OPTIONS_URL =
-  "https://docs.openhands.dev/overview/introduction";
+  "https://zeshan.local";
 export type BackendConnectionMethod = "manual" | "cloud_login";
 
 export type BackendAddedSource = CloudConnectionSource;

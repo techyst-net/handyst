@@ -20,12 +20,8 @@ interface EnumFilterDropdownProps<T extends string> {
   labelByValue?: Record<T, string>;
   ariaLabel?: string;
   className?: string;
-  /** Overrides trigger chip colors, padding, and radius. Menu styles stay shared. */
-  triggerClassName?: string;
   /** Stretch the trigger to the container width, e.g. inside a parent menu. */
   fullWidth?: boolean;
-  /** Highlight the trigger when the value is not the first option. */
-  emphasizeNonDefault?: boolean;
 }
 
 export function EnumFilterDropdown<T extends string>({
@@ -37,9 +33,7 @@ export function EnumFilterDropdown<T extends string>({
   labelByValue,
   ariaLabel,
   className,
-  triggerClassName,
   fullWidth = false,
-  emphasizeNonDefault = true,
 }: EnumFilterDropdownProps<T>) {
   const { t } = useTranslation("openhands");
   const [open, setOpen] = React.useState(false);
@@ -76,11 +70,9 @@ export function EnumFilterDropdown<T extends string>({
         className={cn(
           dropdownFilterTriggerClassName,
           fullWidth && "w-full justify-between",
-          emphasizeNonDefault &&
-            defaultOption &&
+          defaultOption &&
             value !== defaultOption &&
             "border-white/60 bg-white/10",
-          triggerClassName,
         )}
       >
         <span className="whitespace-nowrap">{selectedLabel}</span>

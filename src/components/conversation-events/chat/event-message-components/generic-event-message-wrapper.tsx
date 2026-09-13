@@ -117,7 +117,6 @@ export function GenericEventMessageWrapper({
         details={bodyDetails}
         success={success}
         initiallyExpanded={initiallyExpanded}
-        timestamp={event.timestamp}
         titleIcon={
           skillKnowledge ? (
             <SkillsIcon className="h-4 w-4 stroke-[var(--oh-muted)] flex-shrink-0 mr-2" />

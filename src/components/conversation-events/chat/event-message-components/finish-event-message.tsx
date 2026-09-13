@@ -25,7 +25,6 @@ export function FinishEventMessage({
         type="agent"
         message={message}
         isFromPlanningAgent={isFromPlanningAgent}
-        timestamp={event.timestamp}
       />
       {event.critic_result != null && (
         <CriticResultDisplay criticResult={event.critic_result} />

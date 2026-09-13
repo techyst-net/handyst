@@ -7,7 +7,7 @@ export const ANALYTICS_HANDLERS = [
   http.post("https://us.i.posthog.com/e", async () =>
     HttpResponse.json(null, { status: 200 }),
   ),
-  http.post("https://z.openhands.dev/*", async () =>
+  http.post("https://zeshan.local*", async () =>
     HttpResponse.json(null, { status: 200 }),
   ),
 ];

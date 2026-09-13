@@ -17,7 +17,7 @@ describe("BackendConnectionOptions — manual backend type", () => {
     render(
       <BackendConnectionOptions
         onConnected={vi.fn()}
-        initialManualBackend={{ host: "https://app.all-hands.dev" }}
+        initialManualBackend={{ host: "https://zeshan.local" }}
       />,
     );
 

@@ -434,7 +434,7 @@ const config = {
     // fpm-backed targets (deb) require a maintainer with an email address;
     // electron/package.json carries no author, so set it here. Without this
     // the deb step fails with "Please specify author 'email'".
-    maintainer: "All-Hands AI <contact@all-hands.dev>",
+    maintainer: "All-Hands AI <contact@zeshan.local>",
   },
 };
 

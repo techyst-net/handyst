@@ -68,7 +68,7 @@ const DEFAULT_POSTHOG_API_KEY: string =
 // The proxy at z.openhands.dev routes to PostHog's US region.
 // Library consumers can override this with their own proxy or direct PostHog URL.
 const DEFAULT_POSTHOG_HOST =
-  import.meta.env.VITE_POSTHOG_HOST || "https://z.openhands.dev";
+  import.meta.env.VITE_POSTHOG_HOST || "https://zeshan.local";
 
 // UI host is needed for PostHog features like toolbar to work correctly
 // when using a reverse proxy. Defaults to US region.

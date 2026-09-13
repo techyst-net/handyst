@@ -6,7 +6,6 @@ import type { SourceType } from "#/types/agent-server/core/base/common";
 import { StyledTooltip } from "#/components/shared/buttons/styled-tooltip";
 import { I18nKey } from "#/i18n/declaration";
 import { TextShimmer } from "#/components/shared/text-shimmer";
-import { formatEventTimestamp } from "#/utils/format-event-timestamp";
 import { MarkdownRenderer } from "../markdown/markdown-renderer";
 import { PendingStopIcon } from "./pending-stop-icon";
 import {
@@ -30,7 +29,6 @@ interface ChatMessageProps {
   onRetry?: () => void;
   onDismiss?: () => void;
   onStop?: () => void;
-  timestamp?: string;
 }
 
 export function ChatMessage({
@@ -43,9 +41,8 @@ export function ChatMessage({
   onRetry,
   onDismiss,
   onStop,
-  timestamp,
 }: React.PropsWithChildren<ChatMessageProps>) {
-  const { t, i18n } = useTranslation("openhands");
+  const { t } = useTranslation("openhands");
   const [isHovering, setIsHovering] = React.useState(false);
   const [isCopy, setIsCopy] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -53,7 +50,6 @@ export function ChatMessage({
   const [isSingleLinePendingMessage, setIsSingleLinePendingMessage] =
     React.useState(true);
   const pendingMessageContentRef = React.useRef<HTMLDivElement>(null);
-  const timestampLabel = formatEventTimestamp(timestamp, i18n?.language);
 
   React.useEffect(() => {
     setIsExpanded(false);
@@ -242,22 +238,10 @@ export function ChatMessage({
     </article>
   );
 
-  const messageBubbleWithTimestamp = timestampLabel ? (
-    <StyledTooltip
-      content={<time dateTime={timestamp}>{timestampLabel}</time>}
-      placement="top"
-      isOpen={isHovering}
-    >
-      {messageBubble}
-    </StyledTooltip>
-  ) : (
-    messageBubble
-  );
-
   if (type === "user" && pendingStatus === "error") {
     return (
       <div className="flex w-fit max-w-full flex-col items-end gap-1.5 self-end last:mb-4">
-        {messageBubbleWithTimestamp}
+        {messageBubble}
         <div
           role="alert"
           data-testid="chat-message-error"
@@ -292,7 +276,7 @@ export function ChatMessage({
   if (type === "user" && pendingStatus === "sending") {
     return (
       <div className="flex w-full max-w-full flex-col last:mb-4">
-        {messageBubbleWithTimestamp}
+        {messageBubble}
         <div className="my-1 w-full py-1 text-sm">
           <TextShimmer
             as="p"
@@ -310,5 +294,5 @@ export function ChatMessage({
     );
   }
 
-  return messageBubbleWithTimestamp;
+  return messageBubble;
 }

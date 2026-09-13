@@ -126,7 +126,7 @@ describe("ConversationCardPreview", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("shows bare tags (empty value) with an em dash in the hovercard", () => {
+  it("omits blank tag values from the hovercard", () => {
     renderWithProviders(
       <ConversationCardPreview
         title={PREVIEW_TITLE}
@@ -136,12 +136,10 @@ describe("ConversationCardPreview", () => {
     );
 
     const rows = screen.getAllByTestId("conversation-card-preview-tag-row");
-    expect(rows).toHaveLength(3);
+    expect(rows).toHaveLength(2);
     expect(rows[0]).toHaveAttribute("data-tag-key", "appmode");
     expect(rows[0]).toHaveTextContent("work");
-    expect(rows[1]).toHaveAttribute("data-tag-key", "worktools");
-    expect(rows[1]).toHaveTextContent("—");
-    expect(rows[2]).toHaveAttribute("data-tag-key", "workwsid");
-    expect(rows[2]).toHaveTextContent("abc");
+    expect(rows[1]).toHaveAttribute("data-tag-key", "workwsid");
+    expect(rows[1]).toHaveTextContent("abc");
   });
 });

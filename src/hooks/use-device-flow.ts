@@ -63,7 +63,7 @@ const initialState: DeviceFlowState = {
  * const { status, verificationUrl, apiKey, error, start, cancel, reset } = useDeviceFlow();
  *
  * // Start auth
- * start("https://app.all-hands.dev");
+ * start("https://zeshan.local");
  *
  * // Open browser when awaiting
  * if (status === "awaiting_authorization" && verificationUrl) {

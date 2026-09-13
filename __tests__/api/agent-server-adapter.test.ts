@@ -261,7 +261,7 @@ describe("buildStartConversationRequest", () => {
     expect(payload.initial_message.content[0]?.text).toBe("hello");
   });
 
-  it("preserves base_url for subscription auth while stripping api_key", () => {
+  it("uses subscription auth metadata without API credentials", () => {
     const payload = buildStartConversationRequest({
       settings: {
         ...DEFAULT_SETTINGS,
@@ -270,7 +270,7 @@ describe("buildStartConversationRequest", () => {
           llm: {
             model: "gpt-5.2-codex",
             api_key: "stale-api-key",
-            base_url: "https://chatgpt.com/backend-api/codex",
+            base_url: "https://api.openai.com/v1",
             auth_type: LLM_AUTH_TYPE_SUBSCRIPTION,
             subscription_vendor: OPENAI_SUBSCRIPTION_VENDOR,
           },
@@ -281,7 +281,6 @@ describe("buildStartConversationRequest", () => {
     expect(payload.agent_settings.llm).toEqual({
       model: "gpt-5.2-codex",
       stream: true,
-      base_url: "https://chatgpt.com/backend-api/codex",
       auth_type: LLM_AUTH_TYPE_SUBSCRIPTION,
       subscription_vendor: OPENAI_SUBSCRIPTION_VENDOR,
     });

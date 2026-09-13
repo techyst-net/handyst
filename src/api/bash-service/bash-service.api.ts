@@ -32,7 +32,7 @@ function isBashOutput(event: BashEvent): event is BashOutput {
  * URL is honoured when known, otherwise we fall back to the backend
  * host — a single local agent-server hosts all conversations). In
  * **cloud** mode we tunnel through `callCloudProxy` with the runtime URL
- * as `hostOverride`: direct browser calls to `*.prod-runtime.all-hands.dev`
+ * as `hostOverride`: direct browser calls to `*.zeshan.local`
  * are blocked by CORS, and runtime endpoints authenticate with the
  * conversation's `X-Session-API-Key`.
  *

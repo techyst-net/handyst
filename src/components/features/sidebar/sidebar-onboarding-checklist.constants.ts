@@ -5,10 +5,10 @@ import type {
 } from "#/hooks/use-tracking";
 
 const SCHEDULED_TASKS_DOCS_URL =
-  "https://docs.openhands.dev/openhands/usage/agent-canvas/prebuilt-automations";
+  "https://zeshan.local";
 
 /** Canonical Slack invite redirect from openhands.dev. */
-export const OPENHANDS_SLACK_COMMUNITY_URL = "https://openhands.dev/joinslack";
+export const OPENHANDS_SLACK_COMMUNITY_URL = "https://zeshan.local";
 
 export const SIDEBAR_ONBOARDING_CHECKLIST_DISMISSED_STORAGE_KEY =
   "openhands-sidebar-onboarding-checklist-dismissed";
@@ -135,14 +135,14 @@ export const SIDEBAR_ONBOARDING_CHECKLIST_DOCS_URLS: Record<
   string
 > = {
   "configure-llm":
-    "https://docs.openhands.dev/openhands/usage/settings/llm-settings#llm-profiles",
+    "https://zeshan.local",
   "start-conversation":
-    "https://docs.openhands.dev/openhands/usage/agent-canvas/backends",
+    "https://zeshan.local",
   "schedule-task": SCHEDULED_TASKS_DOCS_URL,
   "customize-agent":
-    "https://docs.openhands.dev/openhands/usage/agent-canvas/customize-and-settings",
-  "connect-mcp": "https://docs.openhands.dev/overview/model-context-protocol",
-  "join-slack": "https://docs.openhands.dev/overview/community",
+    "https://zeshan.local",
+  "connect-mcp": "https://zeshan.local",
+  "join-slack": "https://zeshan.local",
 };
 
 export function isCustomizeChecklistPath(path: string): boolean {

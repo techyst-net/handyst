@@ -47,9 +47,6 @@ const conversations: MockConversation[] = [
     created_at: new Date(now).toISOString(),
     updated_at: new Date(now).toISOString(),
     execution_status: "waiting_for_confirmation",
-    // User-authored tags so the layouts menu's Tag Filters section and the
-    // card chips have something to show in mock mode.
-    tags: { project: "vault", work: "" },
   },
   {
     id: "2",
@@ -230,7 +227,6 @@ function createConversationResponse(
     metrics: conversation.metrics ?? null,
     agent: conversation.agent ?? null,
     workspace: conversation.workspace ?? null,
-    tags: conversation.tags ?? null,
   };
 }
 
@@ -299,17 +295,11 @@ export const CONVERSATION_HANDLERS = [
       const conversation = CONVERSATIONS.get(conversationId);
 
       if (conversation) {
-        const body = (await request.json()) as {
-          title?: string;
-          tags?: Record<string, string>;
-        } | null;
-        // PATCH replaces the complete tags map (agent-server semantics);
-        // title-only and tags-only patches both persist.
-        if (body?.title || body?.tags) {
+        const body = (await request.json()) as { title?: string } | null;
+        if (body?.title) {
           CONVERSATIONS.set(conversationId, {
             ...conversation,
-            ...(body.title ? { title: body.title } : {}),
-            ...(body.tags ? { tags: body.tags } : {}),
+            title: body.title,
             updated_at: new Date().toISOString(),
           });
           return HttpResponse.json(null, { status: 200 });

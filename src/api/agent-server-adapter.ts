@@ -503,20 +503,16 @@ export const AUTOMATION_TAG_KEYS: readonly string[] = [
  * - git / repo / branch / workspace stamps → repo-branch metadata + directory
  *   footer / hovercard rows (``selected_repository``, ``selected_branch``,
  *   ``git_provider``, ``workspace.working_dir``)
- * - the automation family (``automationtrigger`` / ``automationid`` /
- *   ``automationname`` / ``automationrunid``) → provenance the SDK stamps at
- *   creation; the conversation panel's automation filter is its first-class
- *   UI source. The tag surface is user organization data, so machine stamps
- *   stay out of it — and users can't edit or spoof automation classification.
+ * - ``automationid`` / ``automationrunid`` → raw UUIDs consumed by the
+ *   conversation panel's automation filter (chip noise), while
+ *   ``automationname`` / ``automationtrigger`` stay visible
  * - ``localplannerparent`` → internal routing for the local planner; already
  *   surfaced by the hidden-from-list planner filter
  */
 export const RESERVED_CONVERSATION_TAG_KEYS: ReadonlySet<string> = new Set([
   ACP_SERVER_TAG_KEY,
   CLIENT_SOURCE_TAG_KEY,
-  AUTOMATION_TRIGGER_TAG_KEY,
   AUTOMATION_ID_TAG_KEY,
-  AUTOMATION_NAME_TAG_KEY,
   AUTOMATION_RUN_ID_TAG_KEY,
   "title",
   "git_provider",
@@ -564,9 +560,7 @@ export function getDisplayConversationTags(
       ([key, value]) =>
         !RESERVED_CONVERSATION_TAG_KEYS.has(key.trim().toLowerCase()) &&
         typeof value === "string" &&
-        // Bare tags (empty value) are displayable — chips/tooltips render
-        // the key. Whitespace-only values stay dropped (raw-write junk).
-        (value === "" || value.trim().length > 0),
+        value.trim().length > 0,
     )
     .sort(([a], [b]) => {
       const aRank = priorityRank(a);
@@ -632,6 +626,7 @@ function buildNormalizedLlmSettings(value: unknown): SettingsRecord {
     llm.auth_type = LLM_AUTH_TYPE_SUBSCRIPTION;
     llm.subscription_vendor = OPENAI_SUBSCRIPTION_VENDOR;
     delete llm.api_key;
+    delete llm.base_url;
   } else {
     delete llm.auth_type;
     delete llm.subscription_vendor;

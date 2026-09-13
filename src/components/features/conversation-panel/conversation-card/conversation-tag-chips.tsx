@@ -71,19 +71,14 @@ function TagChipContent({
   return (
     <>
       <TagIconSlot icon={icon} keyName={keyName} testId={iconTestId} />
-      {/* Bare tags (empty value) fall back to the key so the chip is never
-          an empty pill. */}
-      <span className="truncate leading-4">
-        {truncateTagChipValue(value || keyName)}
-      </span>
+      <span className="truncate leading-4">{truncateTagChipValue(value)}</span>
     </>
   );
 }
 
 /**
  * Single-row tag chips for a conversation card. Chip labels are value-only
- * (bare tags with an empty value show the key; the full ``key: value`` pair
- * lives in the tooltip); chips that do not fit fold behind a ``+N``
+ * (key lives in the tooltip); chips that do not fit fold behind a ``+N``
  * button that opens a key/value popover.
  *
  * The overflow popover is portaled with ``position: fixed`` so it is not
