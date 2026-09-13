@@ -16,7 +16,7 @@ export const FIELD_HELP_LINKS: Record<
     href: string;
     /** Skip rendering the schema description separately when the help text already includes it. */
     hideDescription?: boolean;
-    /** Optional trailing copy rendered after the link (e.g. " section of OpenHands Cloud."). */
+    /** Optional trailing copy rendered after the link (e.g. " section of Handyst Cloud."). */
     suffixKey?: string;
   }
 > = {
@@ -26,7 +26,7 @@ export const FIELD_HELP_LINKS: Record<
     href: "https://docs.openhands.dev/usage/local-setup#getting-an-api-key",
   },
   // Mirror the hint shown under the LLM provider's API key field when
-  // OpenHands is selected as the active provider; the SDK reuses that active
+  // Handyst is selected as the active provider; the SDK reuses that active
   // LLM key when the critic key is empty.
   "verification.critic_api_key": {
     textKey: "SCHEMA$VERIFICATION$CRITIC_API_KEY$HELP_TEXT",

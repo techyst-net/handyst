@@ -477,7 +477,7 @@ describe("LlmSettingsScreen - provider connection selector", () => {
   });
 });
 
-describe("LlmSettingsScreen - OpenHands provider on cloud", () => {
+describe("LlmSettingsScreen - Handyst provider on cloud", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     vi.spyOn(activeBackendContext, "useActiveBackend").mockReturnValue({
@@ -488,7 +488,7 @@ describe("LlmSettingsScreen - OpenHands provider on cloud", () => {
     );
   });
 
-  it("hides the inline API key and base URL inputs for an OpenHands provider model", async () => {
+  it("hides the inline API key and base URL inputs for an Handyst provider model", async () => {
     renderLlmSettingsScreen({
       embedded: true,
       hideSaveButton: true,
@@ -509,7 +509,7 @@ describe("LlmSettingsScreen - OpenHands provider on cloud", () => {
     ).toBeInTheDocument();
   });
 
-  it("hides the OpenHands API key help link on cloud (the key is server-minted)", async () => {
+  it("hides the Handyst API key help link on cloud (the key is server-minted)", async () => {
     renderLlmSettingsScreen({
       embedded: true,
       hideSaveButton: true,
@@ -554,7 +554,7 @@ describe("LlmSettingsScreen - OpenHands provider on cloud", () => {
     expect(llmPayload).not.toHaveProperty("base_url");
   });
 
-  it("still shows the API key input for the OpenHands provider on a local backend", async () => {
+  it("still shows the API key input for the Handyst provider on a local backend", async () => {
     vi.spyOn(activeBackendContext, "useActiveBackend").mockReturnValue({
       backend: mockLocalBackend,
     } as ReturnType<typeof activeBackendContext.useActiveBackend>);
@@ -570,13 +570,13 @@ describe("LlmSettingsScreen - OpenHands provider on cloud", () => {
 
     await screen.findByTestId("llm-settings-screen");
 
-    // Local mode still collects an inline key for the OpenHands provider.
+    // Local mode still collects an inline key for the Handyst provider.
     expect(screen.getByTestId("llm-api-key-input")).toBeInTheDocument();
     const openHandsHelp = screen.getByTestId("openhands-api-key-help");
     expect(openHandsHelp).toBeInTheDocument();
-    // The OpenHands provider help uses the split TEXT/LINK/SUFFIX keys (not
-    // the stale single-string "API Keys tab" key) and links to OpenHands
-    // Cloud's API Keys page, where the OpenHands LLM Key section lives.
+    // The Handyst provider help uses the split TEXT/LINK/SUFFIX keys (not
+    // the stale single-string "API Keys tab" key) and links to Handyst
+    // Cloud's API Keys page, where the Handyst LLM Key section lives.
     expect(openHandsHelp).toHaveTextContent(
       "SETTINGS$OPENHANDS_API_KEY_HELP_TEXT",
     );
@@ -602,7 +602,7 @@ describe("LlmSettingsScreen - OpenHands provider on cloud", () => {
     );
   });
 
-  it("still shows the API key input for a non-OpenHands provider on cloud", async () => {
+  it("still shows the API key input for a non-Handyst provider on cloud", async () => {
     renderLlmSettingsScreen({
       embedded: true,
       hideSaveButton: true,

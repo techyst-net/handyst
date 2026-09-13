@@ -412,7 +412,7 @@ describe("RunLogsModal — run inspection summary", () => {
   });
 });
 
-describe("RunLogsModal — Debug with OpenHands button", () => {
+describe("RunLogsModal — Debug with Handyst button", () => {
   const makeRun = (status: AutomationRunStatus): AutomationRun => ({
     id: "run-1",
     status,

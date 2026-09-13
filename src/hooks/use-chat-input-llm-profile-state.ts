@@ -32,7 +32,7 @@ export interface ChatInputLlmProfileState {
 }
 
 /**
- * Backs the OpenHands LLM-profile switcher pill, both on the home page (where
+ * Backs the Handyst LLM-profile switcher pill, both on the home page (where
  * a pick activates the profile globally so the next conversation launches
  * with it) and inside a conversation (live swap). The ACP analog is
  * {@link useChatInputModelState}. Mirrors the former SwitchProfileButton's

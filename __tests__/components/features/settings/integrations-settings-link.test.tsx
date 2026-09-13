@@ -12,7 +12,7 @@ import { IntegrationsSettingsLink } from "#/components/features/settings/integra
 
 const cloudBackend: Backend = {
   id: "cloud-1",
-  name: "OpenHands Cloud",
+  name: "Handyst Cloud",
   host: "https://app.all-hands.dev",
   apiKey: "token",
   kind: "cloud",

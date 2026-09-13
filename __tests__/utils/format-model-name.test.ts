@@ -15,7 +15,7 @@ describe("formatNativeModelName", () => {
     expect(formatNativeModelName("openai/gpt-4o")).toBe("gpt-4o");
   });
 
-  it("labels only configured OpenHands free-model routes as free", () => {
+  it("labels only configured Handyst free-model routes as free", () => {
     expect(Object.keys(FREE_OPENHANDS_MODELS)).toEqual([
       "openhands/deepseek-v4-flash",
     ]);
@@ -35,7 +35,7 @@ describe("formatNativeModelName", () => {
     expect(isFreeOpenHandsModel("openai/glm-5.2")).toBe(false);
   });
 
-  it("keeps free OpenHands labels on native conversation chips", () => {
+  it("keeps free Handyst labels on native conversation chips", () => {
     expect(formatNativeModelName("openhands/glm-5.2")).toBe("glm-5.2");
     expect(formatNativeModelName("openhands/deepseek-v4-flash")).toBe(
       FREE_OPENHANDS_MODELS["openhands/deepseek-v4-flash"],

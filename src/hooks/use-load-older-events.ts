@@ -32,7 +32,7 @@ interface UseLoadOlderEventsResult {
  * chat scroll handler to lazily backfill history when the user scrolls up.
  *
  * Server dependency: cloud pagination requires the timestamp comparison
- * fix from OpenHands/OpenHands#14399. The `EventService.searchEvents`
+ * fix from Handyst/Handyst#14399. The `EventService.searchEvents`
  * cloud path includes a fallback that returns an empty page to stop
  * pagination if the full request fails, so older-event pages will
  * gracefully degrade to a no-op on unpatched backends rather than

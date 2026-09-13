@@ -14,7 +14,7 @@ import {
 } from "#/utils/skill-enablement";
 
 // Two anchors from the bundled catalog: `add-skill` carries `defaultEnabled`,
-// `add-javadoc` is the language-specific kind of skill OpenHands#16302 asked
+// `add-javadoc` is the language-specific kind of skill Handyst#16302 asked
 // not to be opted into.
 const RECOMMENDED = "add-skill";
 const OPTIONAL = "add-javadoc";

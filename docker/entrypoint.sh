@@ -41,7 +41,7 @@
 #                          agent-server (default: http://127.0.0.1:AGENT_SERVER_PORT).
 #                          Setting this enables local-mode auth so the session
 #                          API key is validated internally instead of against the
-#                          OpenHands cloud API.
+#                          Handyst cloud API.
 #   FILE_STORE             – Storage backend for automation tarballs (default: local).
 #                          Without this the automation backend may fall back to
 #                          S3/GCS which fails without cloud credentials.
@@ -262,7 +262,7 @@ export AGENT_SERVER_URL="${AGENT_SERVER_URL:-http://127.0.0.1:${AGENT_SERVER_POR
 # the agent-server REST API (tarball upload, bash dispatch, auth key minting).
 # When set, ServiceSettings.is_local_mode returns True, enabling local API key
 # authentication. Without this, the automation server falls back to validating
-# keys against the OpenHands cloud API (app.all-hands.dev), which returns 401
+# keys against the Handyst cloud API (app.all-hands.dev), which returns 401
 # for locally-generated session keys.
 export AUTOMATION_AGENT_SERVER_URL="${AUTOMATION_AGENT_SERVER_URL:-http://127.0.0.1:${AGENT_SERVER_PORT}}"
 
@@ -435,7 +435,7 @@ PIDS+=("$STATIC_PID")
 # leak by Referer from the workbench's own subresources.
 #
 # The token's scope is upstream's to fix and is tracked in
-# OpenHands/software-agent-sdk#4317; if the editor gets a credential of its own,
+# Handyst/software-agent-sdk#4317; if the editor gets a credential of its own,
 # this exclusion and the --no-referrer-prefix below can both be revisited.
 if [ -n "${PUBLIC_MODE_PORT:-}" ]; then
   log "Starting public-mode frontend on port $PUBLIC_MODE_PORT (--auth-required)..."

@@ -1,6 +1,6 @@
 # Containerized ACP agent-server for Agent Canvas (agent-canvas#1014).
 #
-# Brings up the OpenHands Agent Server image — which pre-installs the ACP CLI
+# Brings up the Handyst Agent Server image — which pre-installs the ACP CLI
 # wrappers (claude-agent-acp / codex-acp / gemini) — with a persistent volume so
 # conversations and materialised credential files survive restarts. Point Canvas
 # at it with VITE_BACKEND_BASE_URL=http://localhost:8010 (the image's CORS allows
@@ -39,7 +39,7 @@ services:
       # agent-server's own secret store, and does NOT flag the request
       # secrets_encrypted). Set it to (a) persist saved secrets across
       # container restarts and (b) enable the encrypted-settings path used by
-      # OpenHands-agent (non-ACP) conversations. Generate one with
+      # Handyst-agent (non-ACP) conversations. Generate one with
       # `python -c "import secrets;print(secrets.token_urlsafe(32))"`.
       # - OH_SECRET_KEY=${OH_SECRET_KEY}
       #

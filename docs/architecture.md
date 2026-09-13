@@ -1,6 +1,6 @@
 # Agent Canvas architecture
 
-Agent Canvas is a React and TypeScript frontend for running and monitoring OpenHands agents across local, remote, and hosted environments. It is adapted from the OpenHands frontend to talk directly to the OpenHands Agent Server and related automation services.
+Agent Canvas is a React and TypeScript frontend for running and monitoring Handyst agents across local, remote, and hosted environments. It is adapted from the Handyst frontend to talk directly to the Handyst Agent Server and related automation services.
 
 ## System boundaries
 
@@ -8,7 +8,7 @@ Agent Canvas is responsible for:
 
 - Rendering the agent conversation, terminal, browser, files, settings, and automation UI.
 - Managing frontend state for conversations, backend selection, settings, profiles, and local metadata.
-- Translating UI actions into OpenHands Agent Server API calls.
+- Translating UI actions into Handyst Agent Server API calls.
 - Packaging the UI both as a standalone app and as library entrypoints for host applications.
 
 Agent Canvas is not responsible for:
@@ -20,13 +20,13 @@ Agent Canvas is not responsible for:
 
 ## Runtime services
 
-The primary backend is the [OpenHands Agent Server](https://github.com/OpenHands/software-agent-sdk/tree/main/openhands-agent-server/openhands/agent_server). Agent Canvas can connect to one or more Agent Server instances and switch between them from the UI.
+The primary backend is the [Handyst Agent Server](https://github.com/Handyst/software-agent-sdk/tree/main/openhands-agent-server/openhands/agent_server). Agent Canvas can connect to one or more Agent Server instances and switch between them from the UI.
 
 Optional runtime services include:
 
 - An ingress service that routes frontend, Agent Server, and automation traffic behind one local origin.
 - An Automation Server for scheduled or event-triggered agent runs.
-- OpenHands Cloud APIs for hosted sandbox and organization workflows.
+- Handyst Cloud APIs for hosted sandbox and organization workflows.
 
 Agent Canvas stack launchers expose runtime service information through the backend `/server_info.runtime_services` field. The frontend forwards that backend-provided information into new conversations as an agent context suffix so agents can use the correct URLs instead of guessing ports.
 

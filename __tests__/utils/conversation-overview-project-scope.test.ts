@@ -50,7 +50,7 @@ describe("conversation overview project scope", () => {
         buildAutomation({
           id: "1",
           name: "A",
-          repository: "OpenHands/Agent-Canvas.git",
+          repository: "Handyst/Agent-Canvas.git",
         }),
         "openhands/agent-canvas",
       ),

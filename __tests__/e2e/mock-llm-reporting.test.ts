@@ -24,10 +24,10 @@ describe("mock-LLM E2E reporting", () => {
         },
       ],
       workflowUrl:
-        "https://github.com/OpenHands/agent-canvas/actions/runs/28000401257",
+        "https://github.com/Handyst/agent-canvas/actions/runs/28000401257",
       commit: "82c9e1d04d62961e14742e20a4237ecd6db20ff0",
       artifactUrl:
-        "https://github.com/OpenHands/agent-canvas/actions/runs/28000401257/artifacts/7811037798",
+        "https://github.com/Handyst/agent-canvas/actions/runs/28000401257/artifacts/7811037798",
       title: "Mock-LLM Docker E2E Test Results",
       newFiles: [],
       markerMeta: null,
@@ -119,7 +119,7 @@ describe("mock-LLM E2E reporting", () => {
       });
 
     const result = await upsertJobComment({
-      repo: "OpenHands/OpenHands",
+      repo: "Handyst/Handyst",
       issueNumber: "16521",
       token: "t",
       body: "## ✅ Mock-LLM E2E Tests\n\n**62/62 passed**",
@@ -131,7 +131,7 @@ describe("mock-LLM E2E reporting", () => {
     expect(requests.filter((r) => r.method === "PATCH")).toEqual([
       {
         method: "PATCH",
-        path: "/repos/OpenHands/OpenHands/issues/comments/22",
+        path: "/repos/Handyst/Handyst/issues/comments/22",
       },
     ]);
     expect(requests.some((r) => r.method === "POST")).toBe(false);

@@ -95,7 +95,7 @@ describe("ChatInputLlmProfilePicker", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("labels a free OpenHands route in the profile menu", () => {
+  it("labels a free Handyst route in the profile menu", () => {
     useChatInputLlmProfileStateMock.mockReturnValue(
       state({
         profiles: [
@@ -115,11 +115,11 @@ describe("ChatInputLlmProfilePicker", () => {
     fireEvent.click(screen.getByTestId("chat-input-llm-profile"));
 
     expect(
-      screen.getByText("OpenHands DeepSeek V4 Flash (free)"),
+      screen.getByText("Handyst DeepSeek V4 Flash (free)"),
     ).toBeInTheDocument();
   });
 
-  it("labels a free OpenHands route in the read-only profile menu", () => {
+  it("labels a free Handyst route in the read-only profile menu", () => {
     useChatInputLlmProfileStateMock.mockReturnValue(
       state({
         canSwitchProfile: false,
@@ -132,7 +132,7 @@ describe("ChatInputLlmProfilePicker", () => {
 
     expect(
       screen.getByTestId("chat-input-llm-profile-current"),
-    ).toHaveTextContent("OpenHands DeepSeek V4 Flash (free)");
+    ).toHaveTextContent("Handyst DeepSeek V4 Flash (free)");
   });
 
   it("links to the LLM profiles settings page", () => {

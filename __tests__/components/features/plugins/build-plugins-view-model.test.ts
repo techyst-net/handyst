@@ -9,7 +9,7 @@ import type { InstalledPluginInfo } from "#/api/plugins-management-service";
 const catalogPlugin: MarketplacePlugin = {
   name: "demo-plugin",
   description: "Catalog description",
-  source: "github:OpenHands/extensions",
+  source: "github:Handyst/extensions",
   ref: null,
   repo_path: "plugins/demo-plugin",
   installed: false,
@@ -20,7 +20,7 @@ const installedPlugin: InstalledPluginInfo = {
   version: "2.0.0",
   description: "Installed description",
   enabled: false,
-  source: "github:OpenHands/extensions",
+  source: "github:Handyst/extensions",
   resolved_ref: "main",
   repo_path: "plugins/demo-plugin",
   installed_at: "2026-06-01T00:00:00Z",

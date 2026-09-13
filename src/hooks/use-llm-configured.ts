@@ -17,7 +17,7 @@ interface LlmConfiguredResult {
   /**
    * True when the active backend's agent has a usable LLM:
    * - ACP agents own their LLM via a subprocess, so they never need a key.
-   * - OpenHands agents are ready only once an LLM API key has been saved.
+   * - Handyst agents are ready only once an LLM API key has been saved.
    * - When the LLM settings page is hidden by a feature flag there is no
    *   place to finish setup, so we treat the LLM as configured to avoid
    *   surfacing an actionless warning.
@@ -35,7 +35,7 @@ interface LlmConfiguredResult {
 /**
  * Reports whether the active backend's agent has an LLM ready to run
  * conversations. Surfaces the gap left by the onboarding "Skip for now" path,
- * which persists no settings — leaving an OpenHands agent without an API key.
+ * which persists no settings — leaving an Handyst agent without an API key.
  */
 export function useLlmConfigured(): LlmConfiguredResult {
   const {
@@ -144,7 +144,7 @@ export function useLlmConfigured(): LlmConfiguredResult {
   // leaves us with no data to decide from — otherwise a transient network
   // error would surface the banner with the same urgency as a genuinely
   // missing API key. A settings 404 is deliberately not covered here:
-  // `useSettings` maps it to DEFAULT_SETTINGS (no key, OpenHands agent) while
+  // `useSettings` maps it to DEFAULT_SETTINGS (no key, Handyst agent) while
   // keeping `isError` set, and that is exactly the new-user / "Skip for now"
   // state the banner exists to catch — so we keep deciding from that data.
   const settingsIndeterminate = settingsLoading || (settingsError && !settings);
@@ -152,7 +152,7 @@ export function useLlmConfigured(): LlmConfiguredResult {
   // The active agent profile decides `isAcpAgent` and which LLM profile the
   // next conversation runs; on a cold cache it's still loading, so decide
   // nothing yet — otherwise an ACP agent (which needs no key) briefly reads as
-  // an unconfigured OpenHands agent and flashes the "LLM not set up" banner.
+  // an unconfigured Handyst agent and flashes the "LLM not set up" banner.
   const agentProfileIndeterminate = activeAgentProfileLoading;
   const profilesIndeterminate =
     profilesLoading || (profilesError && !profilesData);

@@ -64,7 +64,7 @@ const terminalObservationEvent: ObservationEvent = {
       hostname: "runtime",
       prefix: "",
       suffix: "",
-      working_dir: "/workspace/project/OpenHands",
+      working_dir: "/workspace/project/Handyst",
       py_interpreter_path: null,
     },
   },

@@ -7,7 +7,7 @@ describe("buildPluginLaunchPath", () => {
     // Arrange: coordinates whose JSON base64-encodes with URL-special chars (+ / =).
     const plugins: PluginSpec[] = [
       {
-        source: "github:OpenHands/extensions",
+        source: "github:Handyst/extensions",
         ref: "v1.2+3",
         repo_path: "sub/dir",
       },

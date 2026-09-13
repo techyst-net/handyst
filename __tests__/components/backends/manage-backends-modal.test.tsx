@@ -569,7 +569,7 @@ describe("ManageBackendsModal", () => {
       <TestSeed
         onMount={(ctx) => {
           ctx.addBackend({
-            name: "OpenHands Cloud",
+            name: "Handyst Cloud",
             host: "https://app.all-hands.dev",
             apiKey: "expired-token",
             kind: "cloud",
@@ -615,7 +615,7 @@ describe("ManageBackendsModal", () => {
       <TestSeed
         onMount={(ctx) => {
           ctx.addBackend({
-            name: "OpenHands Cloud",
+            name: "Handyst Cloud",
             host: "https://app.all-hands.dev",
             apiKey: "expired-token",
             kind: "cloud",
@@ -639,7 +639,7 @@ describe("ManageBackendsModal", () => {
       expect(stored).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            name: "OpenHands Cloud",
+            name: "Handyst Cloud",
             apiKey: "fresh-cloud-token",
           }),
         ]),
@@ -666,7 +666,7 @@ describe("ManageBackendsModal", () => {
       <TestSeed
         onMount={(ctx) => {
           ctx.addBackend({
-            name: "OpenHands Cloud",
+            name: "Handyst Cloud",
             host: "https://app.all-hands.dev",
             apiKey: "expired-token",
             kind: "cloud",
@@ -699,7 +699,7 @@ describe("ManageBackendsModal", () => {
       <TestSeed
         onMount={(ctx) => {
           ctx.addBackend({
-            name: "OpenHands Cloud",
+            name: "Handyst Cloud",
             host: "https://app.all-hands.dev",
             apiKey: "",
             kind: "cloud",
@@ -737,7 +737,7 @@ describe("ManageBackendsModal", () => {
       <TestSeed
         onMount={(ctx) => {
           ctx.addBackend({
-            name: "OpenHands Cloud",
+            name: "Handyst Cloud",
             host: "https://app.all-hands.dev",
             apiKey: "",
             kind: "cloud",
@@ -752,7 +752,7 @@ describe("ManageBackendsModal", () => {
     // Assert
     await waitFor(() =>
       expect(
-        screen.getByTestId("manage-backends-status-OpenHands Cloud"),
+        screen.getByTestId("manage-backends-status-Handyst Cloud"),
       ).toHaveTextContent("BACKEND$LOGGED_OUT"),
     );
     expect(

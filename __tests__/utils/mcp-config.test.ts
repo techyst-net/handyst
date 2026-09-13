@@ -284,7 +284,7 @@ describe("MCP sparse patches", () => {
           type: "oauth" as const,
           client_auth_method: "client_secret_post" as const,
           scopes: "mail.read",
-          client_name: "OpenHands Canvas",
+          client_name: "Handyst Canvas",
           client_metadata_url: "https://mail.example/oauth/client.json",
           client_id: "old-client",
           client_secret: REDACTED_MCP_SECRET_VALUE,

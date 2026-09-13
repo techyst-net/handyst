@@ -16,7 +16,7 @@ interface ResponderDeploymentModalProps {
   onClose: () => void;
   /** Fired for the "Continue with local setup" action. */
   onContinueLocal: () => void;
-  /** Fired for an external-URL action (e.g. OpenHands Cloud integrations). */
+  /** Fired for an external-URL action (e.g. Handyst Cloud integrations). */
   onOpenUrl: (url: string) => void;
 }
 

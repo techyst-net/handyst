@@ -245,9 +245,9 @@ export function LlmSettingsScreen({
       const showOpenHandsApiKeyHelp = isOpenHandsProviderModel(modelValue);
       const authType = resolveLlmAuthType(values[LLM_AUTH_TYPE_KEY]);
       const isSubscriptionAuth = authType === LLM_AUTH_TYPE_SUBSCRIPTION;
-      // On cloud the OpenHands provider is backed by a server-minted LLM key,
+      // On cloud the Handyst provider is backed by a server-minted LLM key,
       // so the inline API key / base URL inputs are not user-supplied. Local
-      // mode still collects an api_key (the OpenHands provider can run against
+      // mode still collects an api_key (the Handyst provider can run against
       // a self-hosted endpoint there).
       const hideInlineCredentials =
         isCloud && showOpenHandsApiKeyHelp && !isSubscriptionAuth;
@@ -342,7 +342,7 @@ export function LlmSettingsScreen({
             }
           />
 
-          {/* The OpenHands provider's key lives in the OpenHands Cloud "API
+          {/* The Handyst provider's key lives in the Handyst Cloud "API
               Keys" tab, so point users there instead of the generic docs page
               that covers both LLM and regular API keys. */}
           {showOpenHandsApiKeyHelp ? (
@@ -608,7 +608,7 @@ export function LlmSettingsScreen({
         if (context.view === "basic" && llm.model !== undefined) {
           llm.base_url = getSchemaFieldDefaultValue(schema, "llm.base_url");
         }
-        // On cloud the OpenHands provider uses a server-minted LLM key, so
+        // On cloud the Handyst provider uses a server-minted LLM key, so
         // never send an inline api_key / base_url — let the backend attach its
         // own credential. (Local mode still collects an inline key.)
         if (

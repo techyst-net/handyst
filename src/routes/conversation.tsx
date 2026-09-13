@@ -140,7 +140,7 @@ function AppContent() {
     setLastConversationId(active.backend.id, active.orgId, conversationId);
   }, [conversationId, backendChanged, active.backend.id, active.orgId]);
 
-  // Cloud conversation resume: mirrors OpenHands' useSandboxRecovery.
+  // Cloud conversation resume: mirrors Handyst' useSandboxRecovery.
   //
   // When the cloud API reports sandbox_status === "PAUSED" the sandbox is
   // sleeping. The correct wake-up call is POST /api/v1/sandboxes/{id}/resume

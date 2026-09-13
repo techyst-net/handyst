@@ -89,9 +89,9 @@ const localBackend: Backend = {
 };
 
 const expectedAutomationTelemetryHeaders = {
-  "X-OpenHands-Client": "agent_canvas",
-  "X-OpenHands-Client-Version": expect.any(String),
-  "X-OpenHands-Telemetry-Distinct-Id": "ph-test-distinct-id",
+  "X-Handyst-Client": "agent_canvas",
+  "X-Handyst-Client-Version": expect.any(String),
+  "X-Handyst-Telemetry-Distinct-Id": "ph-test-distinct-id",
 };
 
 const cloudBackend: Backend = {
@@ -517,11 +517,11 @@ describe("AutomationService", () => {
       await interceptor(config);
 
       expect(config.headers.set).toHaveBeenCalledWith(
-        "X-OpenHands-Client",
+        "X-Handyst-Client",
         "agent_canvas",
       );
       expect(config.headers.set).toHaveBeenCalledWith(
-        "X-OpenHands-Telemetry-Distinct-Id",
+        "X-Handyst-Telemetry-Distinct-Id",
         "ph-test-distinct-id",
       );
       expect(config.headers.set).toHaveBeenCalledWith(

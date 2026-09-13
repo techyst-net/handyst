@@ -88,7 +88,7 @@ describe("ConversationCardPreview", () => {
     );
   });
 
-  it("styles the model row with the OpenHands brand icon", () => {
+  it("styles the model row with the Handyst brand icon", () => {
     renderWithProviders(
       <ConversationCardPreview
         title={PREVIEW_TITLE}
@@ -107,7 +107,7 @@ describe("ConversationCardPreview", () => {
 
   it("uses the ACP provider mark on the model row for ACP conversations", () => {
     // The card chip resolves the ACP brand mark; the hovercard for the same
-    // conversation must not contradict it with the OpenHands wordmark.
+    // conversation must not contradict it with the Handyst wordmark.
     renderWithProviders(
       <ConversationCardPreview
         title={PREVIEW_TITLE}

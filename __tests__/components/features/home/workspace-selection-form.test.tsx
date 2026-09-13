@@ -471,7 +471,7 @@ describe("WorkspaceSelectionForm (server-backed workspaces)", () => {
 
   it("auto-selects the newly added workspace after Add Workspace", async () => {
     // Arrange: start with another workspace already selected, mirroring the
-    // repro in OpenHands/agent-canvas#1212.
+    // repro in Handyst/agent-canvas#1212.
     const existingWorkspace = {
       id: "/Users/me/dev/repo1",
       name: "repo1",

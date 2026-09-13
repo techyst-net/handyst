@@ -35,7 +35,7 @@ export function AgentProfileRow({
   const [menuOpen, setMenuOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
-  // Secondary label: the referenced LLM profile (OpenHands) or the "ACP" kind.
+  // Secondary label: the referenced LLM profile (Handyst) or the "ACP" kind.
   const secondary =
     profile.agent_kind === "openhands"
       ? profile.llm_profile_ref

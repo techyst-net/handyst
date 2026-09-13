@@ -26,7 +26,7 @@ const wrapper = ({ children }: { children: React.ReactNode }) => {
 
 const cloudBackend: Backend = {
   id: "cloud-ohe",
-  name: "OpenHands Cloud",
+  name: "Handyst Cloud",
   host: "https://app.all-hands.dev",
   apiKey: "cloud-key",
   kind: "cloud",

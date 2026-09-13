@@ -14,7 +14,7 @@ import { ExtensionsMobileHub } from "#/components/features/skills/extensions-mob
 
 const cloudBackend: Backend = {
   id: "cloud-1",
-  name: "OpenHands Cloud",
+  name: "Handyst Cloud",
   host: "https://app.all-hands.dev",
   apiKey: "token",
   kind: "cloud",

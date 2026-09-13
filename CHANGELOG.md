@@ -25,5 +25,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TypeScript type declarations
 - GitHub Actions workflow for automated npm publishing (OIDC trusted publishing)
 
-[Unreleased]: https://github.com/OpenHands/agent-canvas/compare/v1.0.0-alpha.2...HEAD
-[1.0.0-alpha.2]: https://github.com/OpenHands/agent-canvas/releases/tag/v1.0.0-alpha.2
+[Unreleased]: https://github.com/Handyst/agent-canvas/compare/v1.0.0-alpha.2...HEAD
+[1.0.0-alpha.2]: https://github.com/Handyst/agent-canvas/releases/tag/v1.0.0-alpha.2

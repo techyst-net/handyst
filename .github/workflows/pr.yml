@@ -1,7 +1,7 @@
 name: pr
 
 # Lints PR titles (Conventional Commits) and applies `type:` labels that drive
-# release notes + the version release-please derives (OpenHands/release-actions).
+# release notes + the version release-please derives (Handyst/release-actions).
 #
 # pull_request_target (not pull_request) so it also runs on fork PRs, where the
 # label step needs a writable token. Safe ONLY because the reusable workflow
@@ -18,4 +18,4 @@ jobs:
   pr-title:
     permissions:
       pull-requests: write
-    uses: OpenHands/release-actions/.github/workflows/pr-title.yml@main
+    uses: Handyst/release-actions/.github/workflows/pr-title.yml@main

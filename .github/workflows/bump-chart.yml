@@ -1,4 +1,4 @@
-# Opens a PR in OpenHands/OpenHands-Cloud pointing the agent-canvas chart's
+# Opens a PR in Handyst/Handyst-Cloud pointing the agent-canvas chart's
 # image.tag at the agent-canvas image for this release. Triggered by the
 # "Docker" workflow completing (rather than the tag push itself) so the chart
 # PR only opens once the release image tag has actually been built and pushed.
@@ -55,7 +55,7 @@ jobs:
     # secrets: inherit forwards the org secrets RELEASE_APP_ID /
     # RELEASE_APP_PRIVATE_KEY that the reusable workflow needs.
     secrets: inherit
-    uses: OpenHands/OpenHands-Cloud/.github/workflows/bump-image-tag.yml@main
+    uses: Handyst/Handyst-Cloud/.github/workflows/bump-image-tag.yml@main
     with:
       component: agent-canvas
       chart_file: charts/openhands/charts/agent-canvas/values.yaml

@@ -4,7 +4,7 @@ import { SuggestedTask } from "#/utils/types";
 import { ExecutionStatus } from "#/types/agent-server/core";
 
 /**
- * Lifecycle state of a cloud sandbox. Mirrors OpenHands' V1SandboxStatus.
+ * Lifecycle state of a cloud sandbox. Mirrors Handyst' V1SandboxStatus.
  * Local agent-server conversations do not carry this field (null).
  */
 export type SandboxStatus =
@@ -66,7 +66,7 @@ export interface AppConversationStartRequest {
   // Re-provision an EXISTING conversation (waking a recycled sandbox) instead
   // of minting a new one. The backend keys the rebuilt conversation on this id
   // and, for ACP, resumes it from the durable event store with a bootstrap
-  // prompt (OpenHands#14640). Omit/null to create a fresh conversation.
+  // prompt (Handyst#14640). Omit/null to create a fresh conversation.
   conversation_id?: string | null;
   initial_message?: SendMessageRequest | null;
   processors?: unknown[]; // EventCallbackProcessor - keeping as unknown for now
@@ -83,7 +83,7 @@ export interface AppConversationStartRequest {
   sandbox_id?: string | null;
   plugins?: PluginSpec[] | null; // Plugins to load when starting the conversation
   // One-off launch from a saved AgentProfile, resolved server-side (#3727).
-  // Accepted by the cloud app-server (OpenHands #15060) on
+  // Accepted by the cloud app-server (Handyst #15060) on
   // POST /api/v1/app-conversations; the local path uses the encrypted
   // agent_settings builder instead, which threads its own agentProfileId.
   agent_profile_id?: string | null;
@@ -156,7 +156,7 @@ export interface AppConversation {
    * ``"gemini-cli"``). Populated from ``info.tags.acpserver`` — see
    * ``ACP_SERVER_TAG_KEY`` in ``agent-server-adapter.ts`` for the wire
    * format and the rationale behind the snake_case-incompatible
-   * ``acpserver`` form. ``null`` for OpenHands conversations and for ACP
+   * ``acpserver`` form. ``null`` for Handyst conversations and for ACP
    * conversations whose tag wasn't stamped (e.g. created via an older
    * client or via the raw API). Consumers resolve the display name via
    * ``getAcpProviderDisplayName(acp_server)`` and fall back to a generic
@@ -185,7 +185,7 @@ export interface AppConversation {
   updated_at: string;
   execution_status: ExecutionStatus | null;
   /**
-   * Cloud-only sandbox lifecycle status. Mirrors OpenHands' V1SandboxStatus.
+   * Cloud-only sandbox lifecycle status. Mirrors Handyst' V1SandboxStatus.
    * Absent / null for local agent-server conversations.
    */
   sandbox_status?: SandboxStatus | null;

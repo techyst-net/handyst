@@ -103,7 +103,7 @@ test.describe("cloud LLM provider-picker pagination", () => {
           JSON.stringify([
             {
               id: backendId,
-              name: "OpenHands Cloud (test)",
+              name: "Handyst Cloud (test)",
               // Same origin as the ingress so the browser sends the
               // cloud-proxy request to a host page.route can intercept.
               host: window.location.origin,
@@ -305,7 +305,7 @@ test.describe("cloud LLM provider-picker pagination", () => {
 
     await page.goto("/settings/llm", { waitUntil: "domcontentloaded" });
 
-    // The "Help improve OpenHands" telemetry consent modal can paint later
+    // The "Help improve Handyst" telemetry consent modal can paint later
     // than DOM-content-loaded and a fixed backdrop intercepts pointer events.
     // Pre-dismiss it so the picker click below isn't blocked.
     await dismissAnalyticsModal(page);
@@ -468,7 +468,7 @@ test.describe("cloud LLM provider-picker pagination", () => {
 
     await page.goto("/settings/llm", { waitUntil: "domcontentloaded" });
 
-    // The "Help improve OpenHands" telemetry consent modal can paint later
+    // The "Help improve Handyst" telemetry consent modal can paint later
     // than DOM-content-loaded and a fixed backdrop intercepts pointer events.
     // Pre-dismiss it so the picker click below isn't blocked.
     await dismissAnalyticsModal(page);

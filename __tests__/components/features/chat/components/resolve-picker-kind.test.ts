@@ -13,7 +13,7 @@ describe("resolvePickerKind", () => {
     expect(resolvePickerKind({ isAcp: true })).toBe("model");
   });
 
-  it("shows the LLM-profile picker for an OpenHands context", () => {
+  it("shows the LLM-profile picker for an Handyst context", () => {
     expect(resolvePickerKind({ isAcp: false })).toBe("llm-profile");
   });
 });

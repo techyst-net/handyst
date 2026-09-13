@@ -52,7 +52,7 @@ describe("ProfileRow", () => {
     expect(screen.getByText("openai/gpt-4")).toBeInTheDocument();
   });
 
-  it("labels a free OpenHands route without changing the raw title", () => {
+  it("labels a free Handyst route without changing the raw title", () => {
     render(
       <ProfileRow
         {...defaultProps}
@@ -61,7 +61,7 @@ describe("ProfileRow", () => {
     );
 
     expect(
-      screen.getByText("OpenHands DeepSeek V4 Flash (free)"),
+      screen.getByText("Handyst DeepSeek V4 Flash (free)"),
     ).toHaveAttribute("title", "openhands/deepseek-v4-flash");
   });
 

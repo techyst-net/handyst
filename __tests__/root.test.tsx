@@ -559,7 +559,7 @@ describe("App root agent-server availability guard", () => {
   it("shows the manage-backends recovery modal when the active cloud backend is logged out", async () => {
     const cloudBackend = {
       id: "cloud-expired",
-      name: "OpenHands Cloud",
+      name: "Handyst Cloud",
       host: "https://app.all-hands.dev",
       apiKey: "expired-token",
       kind: "cloud",
@@ -603,7 +603,7 @@ describe("App root agent-server availability guard", () => {
     vi.stubEnv("VITE_LOCK_TO_CLOUD", "https://app.all-hands.dev");
     const cloudBackend = {
       id: "cloud-expired",
-      name: "OpenHands Cloud",
+      name: "Handyst Cloud",
       host: "https://app.all-hands.dev",
       apiKey: "expired-token",
       kind: "cloud",
@@ -850,7 +850,7 @@ describe("App root agent-server availability guard", () => {
       .__AGENT_CANVAS_SESSION_API_KEY__;
     const lockedCloud = {
       id: "locked-cloud",
-      name: "OpenHands Cloud",
+      name: "Handyst Cloud",
       host: "https://app.all-hands.dev",
       apiKey: "cloud-session-key",
       kind: "cloud",

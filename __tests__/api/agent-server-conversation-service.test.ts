@@ -919,7 +919,7 @@ describe("AgentServerConversationService", () => {
       await expect(
         AgentServerConversationService.updateConversationRepository(
           "missing-conv",
-          "OpenHands/agent-canvas",
+          "Handyst/agent-canvas",
         ),
       ).rejects.toThrow("Conversation missing-conv was not found");
     });

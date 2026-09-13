@@ -9,7 +9,7 @@ import {
   getMcpMarketplaceCatalog,
 } from "#/utils/mcp-marketplace-utils";
 
-describe("OpenHands extensions catalogs", () => {
+describe("Handyst extensions catalogs", () => {
   it("hydrates the MCP marketplace from @openhands/extensions", () => {
     expect(INTEGRATION_CATALOG.length).toBeGreaterThan(0);
 

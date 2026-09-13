@@ -105,7 +105,7 @@ test.describe("mock-LLM ACP credentials-configured banner (#1244)", () => {
     } catch {
       // best-effort
     }
-    // Reset agent_kind back to OpenHands so suites expecting the default agent
+    // Reset agent_kind back to Handyst so suites expecting the default agent
     // aren't affected by our ACP selection.
     const page = await browser.newPage();
     try {

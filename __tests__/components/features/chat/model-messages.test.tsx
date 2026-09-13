@@ -105,7 +105,7 @@ describe("ModelMessages", () => {
     );
   });
 
-  it("labels a free OpenHands route in expanded profile diagnostics", async () => {
+  it("labels a free Handyst route in expanded profile diagnostics", async () => {
     const user = userEvent.setup();
     useModelStore.getState().show(CONVERSATION_ID, "event-1", [
       {
@@ -129,7 +129,7 @@ describe("ModelMessages", () => {
     );
 
     expect(
-      screen.getByText(/model:\s+OpenHands DeepSeek V4 Flash \(free\)/),
+      screen.getByText(/model:\s+Handyst DeepSeek V4 Flash \(free\)/),
     ).toBeInTheDocument();
   });
 });

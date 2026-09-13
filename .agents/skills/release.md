@@ -14,7 +14,7 @@ triggers:
 ## Overview
 
 Releases are **trunk-based and automated by release-please**, via the shared reusable
-workflows in [`OpenHands/release-actions`](https://github.com/OpenHands/release-actions):
+workflows in [`Handyst/release-actions`](https://github.com/Handyst/release-actions):
 
 1. PRs merge to `main` with **Conventional Commit titles** (`feat`, `fix`, `perf`, `docs`, `chore`, `build`, `ci`, `refactor`, `style`, `test`, `revert`). `.github/workflows/pr.yml` lints the title and applies the matching `type:` label; squash merge uses the PR title as the commit message.
 2. On every push to `main`, `.github/workflows/release.yml` runs release-please, which maintains a **draft release PR** titled `chore(main): release X.Y.Z` accumulating everything merged since the last release.

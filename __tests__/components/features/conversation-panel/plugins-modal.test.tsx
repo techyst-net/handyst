@@ -25,7 +25,7 @@ describe("PluginsModal", () => {
       git_provider: null,
       plugins: [
         {
-          source: "github:OpenHands/extensions",
+          source: "github:Handyst/extensions",
           ref: "main",
           repo_path: "plugins/city-weather",
         },
@@ -37,7 +37,7 @@ describe("PluginsModal", () => {
     expect(
       screen.getByTestId("active-plugin-city-weather"),
     ).toBeInTheDocument();
-    expect(screen.getByText("OpenHands/extensions @ main")).toBeInTheDocument();
+    expect(screen.getByText("Handyst/extensions @ main")).toBeInTheDocument();
   });
 
   it("shows the plugin's name when the source is not a useful label", () => {

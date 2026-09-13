@@ -746,7 +746,7 @@ describe("stack mode routing", () => {
 describe("default constants", () => {
   it("has expected default automation repo", () => {
     expect(DEFAULT_AUTOMATION_REPO).toBe(
-      "https://github.com/OpenHands/automation",
+      "https://github.com/Handyst/automation",
     );
   });
 

@@ -39,7 +39,7 @@ export function isLocalPluginSource(plugin: PluginSpec): boolean {
   return true;
 }
 
-/** Source coordinate with an optional `@ref`, e.g. "OpenHands/extensions @ main". */
+/** Source coordinate with an optional `@ref`, e.g. "Handyst/extensions @ main". */
 export function getPluginSourceLabel(plugin: PluginSpec): string {
   const base = plugin.source.startsWith("github:")
     ? plugin.source.replace("github:", "")

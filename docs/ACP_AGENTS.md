@@ -1,6 +1,6 @@
 # Using ACP agents
 
-Agent Canvas can drive your conversations with the built-in **OpenHands** agent or
+Agent Canvas can drive your conversations with the built-in **Handyst** agent or
 with an external **ACP agent** — Claude Code, Codex, or Gemini CLI. This guide
 explains what ACP agents are, how to onboard one, and how to switch agents or
 models later.
@@ -98,7 +98,7 @@ override, not needed for normal use.
 First-time users get a four-step onboarding modal. To onboard an ACP agent:
 
 1. **Choose agent** — pick Claude Code, Codex, or Gemini CLI instead of
-   OpenHands. The choice is saved immediately to your backend's settings.
+   Handyst. The choice is saved immediately to your backend's settings.
 2. **Check backend** — confirms Agent Canvas can reach the Agent Server.
 3. **Set up credentials** — enter the provider's credentials. Beyond the API
    key (+ optional base URL), this step also collects the credentials a
@@ -216,7 +216,7 @@ grouping isolation is separate (agent-canvas#1016).
 
 Open **Settings → Agent** at any time:
 
-- **Agent** — switch between **OpenHands** and **ACP**.
+- **Agent** — switch between **Handyst** and **ACP**.
 - **Preset** — pick a built-in provider (Claude Code, Codex, Gemini CLI) or
   **Custom** to point at any other ACP server.
 - **Command** — the command line used to spawn the subprocess. Selecting a preset

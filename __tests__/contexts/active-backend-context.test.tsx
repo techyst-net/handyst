@@ -105,7 +105,7 @@ describe("ActiveBackendProvider", () => {
     let added: { id: string } | null = null;
     act(() => {
       added = result.current.addBackend({
-        name: "OpenHands Cloud",
+        name: "Handyst Cloud",
         host: "https://app.all-hands.dev",
         apiKey: "bearer-token",
         kind: "cloud",

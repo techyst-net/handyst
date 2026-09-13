@@ -65,7 +65,7 @@ describe("useActiveAcpProfileDetail", () => {
     expect(screen.getByTestId("acp-detail")).toHaveTextContent("none");
   });
 
-  it("does not fetch the detail when the active profile is OpenHands", async () => {
+  it("does not fetch the detail when the active profile is Handyst", async () => {
     listProfilesMock.mockResolvedValue({
       profiles: [{ id: "id-oh", name: "default", agent_kind: "openhands" }],
       active_agent_profile_id: "id-oh",

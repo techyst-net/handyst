@@ -31,7 +31,7 @@ interface ChatInputLlmProfileMenuContentProps {
 }
 
 /**
- * The in-conversation OpenHands LLM-profile switcher list. Selecting a profile
+ * The in-conversation Handyst LLM-profile switcher list. Selecting a profile
  * live-swaps the running conversation's LLM via `/switch_profile` (the ACP
  * analog is {@link ChatInputModelMenuContent}). Shared by the inline pill and
  * the chat-input overflow submenu.

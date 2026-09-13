@@ -44,7 +44,7 @@ describe("agent-server API access", () => {
       }
 
       if (
-        /from\s+["']@openhands\/typescript-client\/client\/http-client["']/.test(
+        /from\s+["']@techyst\/typescript-client\/client\/http-client["']/.test(
           source,
         )
       ) {

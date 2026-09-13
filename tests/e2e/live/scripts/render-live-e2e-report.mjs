@@ -137,8 +137,8 @@ function formatError(result) {
 
 function sanitizeForComment(value) {
   return stripAnsi(value)
-    .replaceAll("@OpenHands", "@\u200BOpenHands")
-    .replaceAll("@openhands", "@\u200Bopenhands");
+    .replaceAll("@Handyst", "@\u200BOpenHands")
+    .replaceAll("@techyst", "@\u200Bopenhands");
 }
 
 function stripAnsi(value) {

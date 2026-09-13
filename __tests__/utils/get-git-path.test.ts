@@ -9,8 +9,8 @@ describe("getGitPath", () => {
   });
 
   it("should handle standard owner/repo format (GitHub)", () => {
-    expect(getGitPath("OpenHands/OpenHands")).toBe(
-      `${DEFAULT_WORKING_DIR}/OpenHands`,
+    expect(getGitPath("Handyst/Handyst")).toBe(
+      `${DEFAULT_WORKING_DIR}/Handyst`,
     );
     expect(getGitPath("facebook/react")).toBe(`${DEFAULT_WORKING_DIR}/react`);
   });
@@ -37,14 +37,14 @@ describe("getGitPath", () => {
     it("prefers the explicit workspace path over derived git paths", () => {
       expect(
         getGitPath(
-          "OpenHands/software-agent-sdk",
+          "Handyst/software-agent-sdk",
           "/workspace/project/agent-canvas",
         ),
       ).toBe("/workspace/project/agent-canvas");
     });
 
     it("ignores blank workspace paths and falls back to heuristics", () => {
-      expect(getGitPath("OpenHands/software-agent-sdk", "  ")).toBe(
+      expect(getGitPath("Handyst/software-agent-sdk", "  ")).toBe(
         `${DEFAULT_WORKING_DIR}/software-agent-sdk`,
       );
     });

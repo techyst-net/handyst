@@ -178,7 +178,7 @@ export const getFileExtension = (fileName: string): string => {
  * (`/api/v1/git/installations/search` → `/api/v1/git/repositories/search?installation_id=…`)
  * for the given provider/backend combo.
  *
- * Mirrors OpenHands' cloud frontend (parameterized by `app_mode`):
+ * Mirrors Handyst' cloud frontend (parameterized by `app_mode`):
  *   - bitbucket / bitbucket_data_center → always installation-based
  *   - github → installation-based ONLY when the active backend is cloud
  *   - gitlab / azure_devops / forgejo → direct (search) flow
@@ -582,9 +582,9 @@ export const shouldIncludeRepository = (
 };
 
 /**
- * Get the OpenHands query string based on the provider
+ * Get the Handyst query string based on the provider
  * @param provider The git provider
- * @returns The query string for searching OpenHands repositories
+ * @returns The query string for searching Handyst repositories
  */
 export const getOpenHandsQuery = (provider: Provider | null): string => {
   const providerRepositorySuffix: Record<string, string> = {
@@ -599,10 +599,10 @@ export const getOpenHandsQuery = (provider: Provider | null): string => {
 };
 
 /**
- * Check if a repository has the OpenHands suffix based on the provider
+ * Check if a repository has the Handyst suffix based on the provider
  * @param repo The Git repository to check
  * @param provider The git provider
- * @returns True if the repository has the OpenHands suffix
+ * @returns True if the repository has the Handyst suffix
  */
 export const hasOpenHandsSuffix = (
   repo: GitRepository,

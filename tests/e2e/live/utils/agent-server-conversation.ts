@@ -356,7 +356,7 @@ export async function dismissAnalyticsModal(page: Page) {
             const hasAnalyticsDialog = Array.from(
               document.querySelectorAll('[role="dialog"]'),
             ).some((dialog) =>
-              dialog.textContent?.includes("Help improve OpenHands"),
+              dialog.textContent?.includes("Help improve Handyst"),
             );
             if (!hasAnalyticsDialog) {
               return true;

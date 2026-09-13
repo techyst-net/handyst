@@ -64,7 +64,7 @@ const projectRoot = app.isPackaged ? __dirname : join(__dirname, "..");
 const buildDir = join(projectRoot, "build");
 const scriptsDir = join(projectRoot, "scripts");
 
-// OpenHands raised-hands app icon, used as the BrowserWindow.icon option.
+// Handyst raised-hands app icon, used as the BrowserWindow.icon option.
 // Windows gets the multi-size icon.ico (16→256, small sizes as classic BMP
 // entries — the Windows shell needs those); Linux uses the 1024×1024 PNG
 // for its taskbar. On macOS the dock icon comes from the .app bundle's
@@ -382,7 +382,7 @@ function createMainWindow() {
 
   // Route window.open() calls appropriately.
   mainWin.webContents.setWindowOpenHandler(({ url }) => {
-    // The "Login with OpenHands Cloud" device-flow opens about:blank immediately
+    // The "Login with Handyst Cloud" device-flow opens about:blank immediately
     // on the user's click (to beat popup blockers), then navigates the popup to
     // the OAuth verification URL once it has one.  We must allow about:blank
     // through so window.open() returns a non-null WindowProxy; the did-create-window
@@ -630,7 +630,7 @@ async function startStack() {
   //   onServiceLog: stream uvx/agent-server output to the loading window so
   //     the user sees progress instead of an indefinite spinner.
   const result = await main({
-    bannerTitle: "OpenHands Agent Canvas",
+    bannerTitle: "Handyst Agent Canvas",
     staticMode: true,
     staticDir: buildDir,
     mode: "agent-canvas",
@@ -647,7 +647,7 @@ async function startStack() {
     throw new Error(
       "The agent server did not finish starting in time. " +
         "On first launch this can take several minutes while uvx downloads " +
-        "Python and the OpenHands agent-server from PyPI. " +
+        "Python and the Handyst agent-server from PyPI. " +
         "Check your internet connection and try again.",
     );
   }
@@ -659,7 +659,7 @@ app.whenReady().then(async () => {
   nativeTheme.themeSource = "dark";
 
   // Set the dock icon explicitly on macOS so `npm run desktop` shows the
-  // OpenHands logo instead of the default Electron logo. In a packaged
+  // Handyst logo instead of the default Electron logo. In a packaged
   // build the .app bundle's icon.icns already provides this, but
   // app.dock.setIcon() is a cheap idempotent override that also fixes
   // the dev workflow.
@@ -674,7 +674,7 @@ app.whenReady().then(async () => {
     dialog.showErrorBox(
       "Missing prerequisite: uv",
       app.isPackaged
-        ? "The bundled uv binary could not be found. Please reinstall OpenHands Agent Canvas."
+        ? "The bundled uv binary could not be found. Please reinstall Handyst Agent Canvas."
         : "uv (uvx) is not installed.\n\nInstall it from https://docs.astral.sh/uv/ then restart.",
     );
     app.quit();
@@ -717,7 +717,7 @@ app.whenReady().then(async () => {
     const errorTail = recentServiceErrors.length
       ? `\n\nRecent service errors:\n${recentServiceErrors.join("\n")}`
       : "";
-    dialog.showErrorBox("OpenHands Agent Canvas failed to start", summary + errorTail);
+    dialog.showErrorBox("Handyst Agent Canvas failed to start", summary + errorTail);
     app.quit();
   }
 });

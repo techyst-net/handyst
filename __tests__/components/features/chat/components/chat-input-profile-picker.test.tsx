@@ -164,12 +164,12 @@ describe("ChatInputProfileMenuContent", () => {
 
   it("preserves repository and plugin context when changing a blank conversation profile", () => {
     setStoredConversationMetadata("conv-repo", {
-      selected_repository: "OpenHands/agent-canvas",
+      selected_repository: "Handyst/agent-canvas",
       selected_branch: "feature",
       git_provider: "github",
       plugins: [
         {
-          source: "github:OpenHands/extensions",
+          source: "github:Handyst/extensions",
           ref: "v1",
           repo_path: "plugins/weather",
         },
@@ -178,7 +178,7 @@ describe("ChatInputProfileMenuContent", () => {
     useActiveConversationMock.mockReturnValue({
       data: {
         id: "conv-repo",
-        selected_repository: "OpenHands/agent-canvas",
+        selected_repository: "Handyst/agent-canvas",
         selected_branch: "feature",
         git_provider: "github",
         launched_agent_profile: {
@@ -198,13 +198,13 @@ describe("ChatInputProfileMenuContent", () => {
       expect.objectContaining({
         agentProfileId: "id-codex",
         repository: {
-          name: "OpenHands/agent-canvas",
+          name: "Handyst/agent-canvas",
           gitProvider: "github",
           branch: "feature",
         },
         plugins: [
           {
-            source: "github:OpenHands/extensions",
+            source: "github:Handyst/extensions",
             ref: "v1",
             repo_path: "plugins/weather",
           },

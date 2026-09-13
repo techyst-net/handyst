@@ -91,7 +91,7 @@ describe("useSettingsNavItems", () => {
 
     const { result } = renderHook(() => useSettingsNavItems());
 
-    // Agent profiles are available on cloud too (OpenHands #15060), so every
+    // Agent profiles are available on cloud too (Handyst #15060), so every
     // OSS item is present; only the `/settings` LLM-Profiles rename stays
     // local-only, so on cloud every item is passed through unchanged.
     expect(result.current).toEqual(

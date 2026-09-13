@@ -369,7 +369,7 @@ export interface CreateConversationOptions {
   sandboxId?: string;
   // Launch from a saved AgentProfile (resolved server-side) instead of the
   // current encrypted agent_settings (#3727). Supported on both local and the
-  // cloud app-server (OpenHands #15060): local threads it through the
+  // cloud app-server (Handyst #15060): local threads it through the
   // encrypted-settings builder; cloud sends it as a flat request field.
   agentProfileId?: string;
   agentProfileKind?: AgentKind;
@@ -440,7 +440,7 @@ class AgentServerConversationService {
     } = options;
 
     if (getActiveBackend().backend.kind === "cloud") {
-      // Cloud path mirrors OpenHands' frontend: build a flat
+      // Cloud path mirrors Handyst' frontend: build a flat
       // AppConversationStartRequest, POST /api/v1/app-conversations
       // (returns a WORKING task), and let the conversation route's
       // useTaskPolling drive it to READY. NO encrypted-settings
@@ -803,7 +803,7 @@ class AgentServerConversationService {
     if (getActiveBackend().backend.kind === "cloud") {
       // Cloud exposes a per-conversation file endpoint; the sandbox
       // working dir is fixed (`/workspace/project`), so PLAN.md lives at
-      // a known absolute path. Mirrors OpenHands' readConversationFile.
+      // a known absolute path. Mirrors Handyst' readConversationFile.
       const path = requirePathInsideDirectory(
         filePath ?? "/workspace/project/.agents_tmp/PLAN.md",
         "/workspace/project",

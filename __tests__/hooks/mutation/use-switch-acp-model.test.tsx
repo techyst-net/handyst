@@ -85,7 +85,7 @@ describe("useSwitchAcpModel", () => {
   });
 
   it("persists the model as the agent-settings default on the home page when no ACP profile is active", async () => {
-    // Legacy/no-ACP-profile fallback: an active OpenHands profile means the
+    // Legacy/no-ACP-profile fallback: an active Handyst profile means the
     // ACP-profile persist path doesn't apply, so the write goes to settings.
     vi.mocked(AgentProfilesService.listProfiles).mockResolvedValue({
       profiles: [

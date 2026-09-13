@@ -521,13 +521,13 @@ describe("buildAgentServerCommand", () => {
     expect(cmd.args).toEqual([
       "--reinstall",
       "--from",
-      "git+https://github.com/OpenHands/software-agent-sdk@feature-branch#subdirectory=openhands-agent-server",
+      "git+https://github.com/Handyst/software-agent-sdk@feature-branch#subdirectory=openhands-agent-server",
       "--with",
-      "git+https://github.com/OpenHands/software-agent-sdk@feature-branch#subdirectory=openhands-sdk",
+      "git+https://github.com/Handyst/software-agent-sdk@feature-branch#subdirectory=openhands-sdk",
       "--with",
-      "git+https://github.com/OpenHands/software-agent-sdk@feature-branch#subdirectory=openhands-tools",
+      "git+https://github.com/Handyst/software-agent-sdk@feature-branch#subdirectory=openhands-tools",
       "--with",
-      "git+https://github.com/OpenHands/software-agent-sdk@feature-branch#subdirectory=openhands-workspace",
+      "git+https://github.com/Handyst/software-agent-sdk@feature-branch#subdirectory=openhands-workspace",
       "--with",
       "posthog>=6,<7",
       "agent-server",
@@ -544,13 +544,13 @@ describe("buildAgentServerCommand", () => {
     expect(cmd.args).toEqual([
       "--reinstall",
       "--from",
-      "git+https://github.com/OpenHands/software-agent-sdk@abc1234#subdirectory=openhands-agent-server",
+      "git+https://github.com/Handyst/software-agent-sdk@abc1234#subdirectory=openhands-agent-server",
       "--with",
-      "git+https://github.com/OpenHands/software-agent-sdk@abc1234#subdirectory=openhands-sdk",
+      "git+https://github.com/Handyst/software-agent-sdk@abc1234#subdirectory=openhands-sdk",
       "--with",
-      "git+https://github.com/OpenHands/software-agent-sdk@abc1234#subdirectory=openhands-tools",
+      "git+https://github.com/Handyst/software-agent-sdk@abc1234#subdirectory=openhands-tools",
       "--with",
-      "git+https://github.com/OpenHands/software-agent-sdk@abc1234#subdirectory=openhands-workspace",
+      "git+https://github.com/Handyst/software-agent-sdk@abc1234#subdirectory=openhands-workspace",
       "--with",
       "posthog>=6,<7",
       "agent-server",
@@ -569,7 +569,7 @@ describe("buildAgentServerCommand", () => {
     expect(cmd.command).toBe("uvx");
     expect(cmd.args).toContain("--from");
     expect(cmd.args).toContain(
-      "git+https://github.com/OpenHands/software-agent-sdk@feature-branch#subdirectory=openhands-agent-server",
+      "git+https://github.com/Handyst/software-agent-sdk@feature-branch#subdirectory=openhands-agent-server",
     );
     expect(cmd.args).not.toContain("openhands-agent-server==1.18.0");
   });
@@ -609,7 +609,7 @@ describe("buildAgentServerCommand", () => {
     expect(cmd.source).toBe(`local (${sdk})`);
     expect(cmd.args).toContain(path.join(sdk, "openhands-agent-server"));
     expect(cmd.args).not.toContain(
-      "git+https://github.com/OpenHands/software-agent-sdk@feature-branch#subdirectory=openhands-agent-server",
+      "git+https://github.com/Handyst/software-agent-sdk@feature-branch#subdirectory=openhands-agent-server",
     );
     expect(cmd.args).not.toContain("openhands-agent-server==1.18.0");
   });

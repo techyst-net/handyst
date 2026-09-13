@@ -1,14 +1,14 @@
 ---
 name: custom-codereview-guide
-description: Repository-specific review rules for the OpenHands Agent Canvas frontend.
+description: Repository-specific review rules for the Handyst Agent Canvas frontend.
 triggers:
   - /codereview
 ---
 
-# OpenHands Agent Canvas Code Review Guidelines
+# Handyst Agent Canvas Code Review Guidelines
 
 This guide supplements the public `code-review` skill with rules specific to
-`OpenHands/OpenHands`, the Agent Canvas frontend. Read `AGENTS.md` first; it is
+`Handyst/Handyst`, the Agent Canvas frontend. Read `AGENTS.md` first; it is
 the detailed source of truth for current architecture and test conventions.
 
 Be direct and constructive. Review correctness and architecture, not formatting
@@ -35,11 +35,11 @@ Put behavior in the repository that owns it:
 
 | Repository                     | Owns                                                                                                            |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| `OpenHands/OpenHands`          | Agent Canvas UI, frontend state, backend selection, frontend service integration, and local-stack orchestration |
-| `OpenHands/software-agent-sdk` | Agent Server, agents, tools, conversations, events, workspaces, and the canonical server API                    |
-| `OpenHands/typescript-client`  | Browser-compatible typed access to the Agent Server API                                                         |
-| `OpenHands/extensions`         | Reusable skills, plugins, and integrations                                                                      |
-| `OpenHands/automation`         | Scheduling, webhooks, run history, and automation dispatch                                                      |
+| `Handyst/Handyst`          | Agent Canvas UI, frontend state, backend selection, frontend service integration, and local-stack orchestration |
+| `Handyst/software-agent-sdk` | Agent Server, agents, tools, conversations, events, workspaces, and the canonical server API                    |
+| `Handyst/typescript-client`  | Browser-compatible typed access to the Agent Server API                                                         |
+| `Handyst/extensions`         | Reusable skills, plugins, and integrations                                                                      |
+| `Handyst/automation`         | Scheduling, webhooks, run history, and automation dispatch                                                      |
 
 The normal dependency direction is Agent Server contract → TypeScript client →
 Canvas. Flag raw endpoint reimplementations, Canvas-local copies of server
@@ -138,7 +138,7 @@ identity.
   reviewable policy changes. `__tests__/package-library.test.ts` is the executable
   source of truth for allowed specs.
 - Scrutinize newly published third-party dependency versions for supply-chain
-  risk. First-party OpenHands packages are exempt from a waiting period but not
+  risk. First-party Handyst packages are exempt from a waiting period but not
   from contract and release-order review.
 - Package version changes belong in explicit release PRs and must match the
   release workflow expectations.

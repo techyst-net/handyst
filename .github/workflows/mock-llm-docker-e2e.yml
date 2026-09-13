@@ -148,7 +148,7 @@ jobs:
           BODY=$(gh api "/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}" --jq '.body // ""')
           SDK_PR=$(
             printf '%s\n' "$BODY" \
-              | grep -Eo 'OpenHands/software-agent-sdk(/pull/|#)[0-9]+' \
+              | grep -Eo 'Handyst/software-agent-sdk(/pull/|#)[0-9]+' \
               | head -n1 \
               | grep -Eo '[0-9]+$' \
               || true
@@ -163,7 +163,7 @@ jobs:
           # a PR description, but the /pulls/{number} endpoint 404s for an issue
           # number. Degrade gracefully to "no linked PR" (falls back to the
           # released SDK version below) instead of failing the job.
-          SDK_PR_JSON=$(gh api "/repos/OpenHands/software-agent-sdk/pulls/${SDK_PR}" 2>/dev/null) || {
+          SDK_PR_JSON=$(gh api "/repos/Handyst/software-agent-sdk/pulls/${SDK_PR}" 2>/dev/null) || {
             echo "software-agent-sdk#${SDK_PR} is not an open PR (may be an issue) — using the released SDK version."
             exit 0
           }
@@ -293,7 +293,7 @@ jobs:
         run: |
           uv venv .mock-llm-venv
           if [ -n "$SDK_GIT_REF" ]; then
-            uv pip install -p .mock-llm-venv "git+https://github.com/OpenHands/software-agent-sdk@${SDK_GIT_REF}#subdirectory=openhands-sdk"
+            uv pip install -p .mock-llm-venv "git+https://github.com/Handyst/software-agent-sdk@${SDK_GIT_REF}#subdirectory=openhands-sdk"
           else
             uv pip install -p .mock-llm-venv "openhands-sdk==$AGENT_SERVER_VERSION"
           fi

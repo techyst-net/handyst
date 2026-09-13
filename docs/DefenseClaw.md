@@ -1,6 +1,6 @@
 # Integrating DefenseClaw with Agent Canvas
 
-[DefenseClaw](https://github.com/cisco-ai-defense/defenseclaw) is a security governance layer for agentic AI runtimes — it scans skills and MCP servers before they run, inspects LLM traffic at runtime, and produces durable audit evidence. This guide explains how to run DefenseClaw alongside the [OpenHands Agent Server](https://github.com/OpenHands/software-agent-sdk/tree/main/openhands-agent-server) that powers Agent Canvas, without making any code-level changes to either project.
+[DefenseClaw](https://github.com/cisco-ai-defense/defenseclaw) is a security governance layer for agentic AI runtimes — it scans skills and MCP servers before they run, inspects LLM traffic at runtime, and produces durable audit evidence. This guide explains how to run DefenseClaw alongside the [Handyst Agent Server](https://github.com/Handyst/software-agent-sdk/tree/main/openhands-agent-server) that powers Agent Canvas, without making any code-level changes to either project.
 
 > **Status:** DefenseClaw is purpose-built around the OpenClaw runtime and its TypeScript plugin hooks. The integration described here targets the lowest-friction overlap points — skill injection, LLM proxying, CLI scanning, and audit export — that work without modifying Agent Canvas or DefenseClaw source code. [Future work](#future-work-code-level-extensions) describes deeper hooks that would require code changes.
 
@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
     UI["Agent Canvas (browser)"]
-    AS["OpenHands Agent Server\nlocalhost:18000"]
+    AS["Handyst Agent Server\nlocalhost:18000"]
     GP["DefenseClaw Guardrail Proxy\nlocalhost:4000"]
     LLM["LLM Provider"]
     GW["DefenseClaw Gateway Sidecar\nlocalhost:18970"]
@@ -85,7 +85,7 @@ Follow the standard [Agent Canvas quickstart](../README.md). The integration ste
 
 ### A. Load the CodeGuard Skill
 
-DefenseClaw ships a ready-made OpenHands skill — `skills/codeguard/SKILL.md` — that teaches the agent the CodeGuard security rules. When the skill is active, the agent writes code that avoids the patterns DefenseClaw blocks at scan time (hardcoded secrets, `os.system()`, string-interpolated SQL, weak crypto, path traversal, etc.).
+DefenseClaw ships a ready-made Handyst skill — `skills/codeguard/SKILL.md` — that teaches the agent the CodeGuard security rules. When the skill is active, the agent writes code that avoids the patterns DefenseClaw blocks at scan time (hardcoded secrets, `os.system()`, string-interpolated SQL, weak crypto, path traversal, etc.).
 
 **Install the skill into a user or project skill directory:**
 
@@ -131,7 +131,7 @@ export OH_LLM__BASE_URL="http://localhost:4000"
 npm run dev
 ```
 
-> Consult the Agent Server [settings schema](https://github.com/OpenHands/software-agent-sdk/blob/main/openhands-agent-server/openhands/agent_server/settings_router.py) for the exact environment variable name used in your deployment.
+> Consult the Agent Server [settings schema](https://github.com/Handyst/software-agent-sdk/blob/main/openhands-agent-server/openhands/agent_server/settings_router.py) for the exact environment variable name used in your deployment.
 
 **Start the guardrail in observe mode (safe default) or action mode:**
 
@@ -249,7 +249,7 @@ The following integrations would require changes to Agent Canvas, the Agent Serv
 
 ### 1. Native `SecurityAnalyzer` hook
 
-The OpenHands SDK exposes a [`SecurityAnalyzer`](https://docs.openhands.dev/sdk/arch/security.md) interface. A custom implementation could call DefenseClaw's `/api/v1/inspect/tool` endpoint before every tool invocation — mirroring the inspection the OpenClaw TypeScript plugin performs. This would gate bash commands, file writes, and other tool calls through DefenseClaw's four-stage inspection pipeline (regex, Cisco AI Defense cloud rules, LLM judge, OPA policy) before they execute.
+The Handyst SDK exposes a [`SecurityAnalyzer`](https://docs.openhands.dev/sdk/arch/security.md) interface. A custom implementation could call DefenseClaw's `/api/v1/inspect/tool` endpoint before every tool invocation — mirroring the inspection the OpenClaw TypeScript plugin performs. This would gate bash commands, file writes, and other tool calls through DefenseClaw's four-stage inspection pipeline (regex, Cisco AI Defense cloud rules, LLM judge, OPA policy) before they execute.
 
 ```python
 # Sketch — not yet implemented
@@ -294,10 +294,10 @@ DefenseClaw's registry system (`defenseclaw registry add`) ingests external skil
 - [DefenseClaw API Reference](https://github.com/cisco-ai-defense/defenseclaw/blob/main/docs/API.md)
 - [DefenseClaw Guardrail Architecture](https://github.com/cisco-ai-defense/defenseclaw/blob/main/docs/GUARDRAIL.md)
 - [DefenseClaw CodeGuard Skill](https://github.com/cisco-ai-defense/defenseclaw/blob/main/skills/codeguard/SKILL.md)
-- [OpenHands Agent Server](https://github.com/OpenHands/software-agent-sdk/tree/main/openhands-agent-server)
-- [OpenHands SDK Security Analyzer](https://docs.openhands.dev/sdk/arch/security.md)
+- [Handyst Agent Server](https://github.com/Handyst/software-agent-sdk/tree/main/openhands-agent-server)
+- [Handyst SDK Security Analyzer](https://docs.openhands.dev/sdk/arch/security.md)
 - [Agent Canvas Self-Hosting](./SELF_HOSTING.md)
 
 ---
 
-_This document was created by an AI agent (OpenHands) on behalf of the user._
+_This document was created by an AI agent (Handyst) on behalf of the user._

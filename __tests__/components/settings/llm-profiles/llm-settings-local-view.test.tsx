@@ -345,7 +345,7 @@ describe("LlmSettingsLocalView", () => {
   });
 
   describe("create mode form initialization", () => {
-    it("prefills the free OpenHands default when creating a new profile", async () => {
+    it("prefills the free Handyst default when creating a new profile", async () => {
       const user = userEvent.setup();
       renderWithProviders(<LlmSettingsLocalView />);
 
@@ -749,7 +749,7 @@ describe("LlmSettingsLocalView", () => {
   });
 
   describe("Basic tab save", () => {
-    it("preserves hidden base_url for OpenHands models without a model change", async () => {
+    it("preserves hidden base_url for Handyst models without a model change", async () => {
       // Arrange — a profile has an actual advanced base_url value. Switching to
       // Basic hides it, but saving without changing the model must not wipe it.
       const user = userEvent.setup();
@@ -974,7 +974,7 @@ describe("shouldReapplyProfileAfterSave", () => {
   });
 });
 
-describe("LlmSettingsLocalView - OpenHands provider on cloud", () => {
+describe("LlmSettingsLocalView - Handyst provider on cloud", () => {
   const mockSaveMutateAsync = vi.fn();
 
   beforeEach(() => {
@@ -995,7 +995,7 @@ describe("LlmSettingsLocalView - OpenHands provider on cloud", () => {
         ReturnType<typeof useSaveLlmProfileHook.useSaveLlmProfile>
       >(mockSaveMutateAsync),
     );
-    // Cloud backend: the OpenHands provider is backed by a server-minted key.
+    // Cloud backend: the Handyst provider is backed by a server-minted key.
     vi.spyOn(activeBackendContext, "useActiveBackend").mockReturnValue({
       backend: mockCloudBackend,
     } as ReturnType<typeof activeBackendContext.useActiveBackend>);
@@ -1005,14 +1005,14 @@ describe("LlmSettingsLocalView - OpenHands provider on cloud", () => {
     mockSaveMutateAsync.mockResolvedValue({ success: true });
   });
 
-  it("strips api_key and base_url when saving an OpenHands provider profile", async () => {
+  it("strips api_key and base_url when saving an Handyst provider profile", async () => {
     const user = userEvent.setup();
     renderWithProviders(<LlmSettingsLocalView />);
 
     await user.click(screen.getByTestId("add-llm-profile"));
 
     // The mocked LlmSettingsScreen seeds an openai model by default; switch to
-    // an OpenHands provider model and enter an api_key the save must drop.
+    // an Handyst provider model and enter an api_key the save must drop.
     const modelInput = screen.getByTestId("mock-basic-model-input");
     await user.clear(modelInput);
     await user.type(modelInput, "openhands/kimi-k3");

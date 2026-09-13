@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 
-// Block both the direct PostHog ingestion endpoint and the OpenHands reverse
+// Block both the direct PostHog ingestion endpoint and the Handyst reverse
 // proxy (z.openhands.dev) used by the library telemetry service so mock-mode
 // builds never send analytics events to PostHog.
 export const ANALYTICS_HANDLERS = [

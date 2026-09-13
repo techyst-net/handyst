@@ -309,7 +309,7 @@ describe("BackendSelector", () => {
       <TestSeed
         onMount={(ctx) => {
           ctx.addBackend({
-            name: "OpenHands Cloud",
+            name: "Handyst Cloud",
             host: "https://app.all-hands.dev",
             apiKey: "",
             kind: "cloud",
@@ -324,17 +324,17 @@ describe("BackendSelector", () => {
     await waitFor(() => {
       const wrapper = screen.getByTestId("backend-selector");
       const input = wrapper.querySelector("input") as HTMLInputElement;
-      expect(input.value).toBe("OpenHands Cloud – Acme Inc");
+      expect(input.value).toBe("Handyst Cloud – Acme Inc");
     });
 
     await openDropdown();
 
     await waitFor(() => {
       expect(
-        screen.getByText("OpenHands Cloud – Personal"),
+        screen.getByText("Handyst Cloud – Personal"),
       ).toBeInTheDocument();
     });
-    expect(screen.getByText("OpenHands Cloud – Acme Inc")).toBeInTheDocument();
+    expect(screen.getByText("Handyst Cloud – Acme Inc")).toBeInTheDocument();
     expect(getCurrentCloudApiKey).not.toHaveBeenCalled();
   });
 
@@ -642,7 +642,7 @@ describe("BackendSelector", () => {
       <TestSeed
         onMount={(ctx) => {
           ctx.addBackend({
-            name: "OpenHands Cloud",
+            name: "Handyst Cloud",
             host: "https://app.all-hands.dev",
             apiKey: "",
             kind: "cloud",
@@ -656,7 +656,7 @@ describe("BackendSelector", () => {
     await waitFor(() => {
       const wrapper = screen.getByTestId("backend-selector");
       const input = wrapper.querySelector("input") as HTMLInputElement;
-      expect(input.value).toBe("OpenHands Cloud – Acme Inc");
+      expect(input.value).toBe("Handyst Cloud – Acme Inc");
     });
 
     // Act
@@ -665,7 +665,7 @@ describe("BackendSelector", () => {
     // Assert: the org rows render, but no footer actions do.
     await waitFor(() => {
       expect(
-        screen.getByText("OpenHands Cloud – Acme Inc"),
+        screen.getByText("Handyst Cloud – Acme Inc"),
       ).toBeInTheDocument();
     });
     expect(

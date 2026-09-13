@@ -44,7 +44,7 @@ function buildCatalogPlugin(
   return {
     name: "demo-plugin",
     description: "A demo plugin",
-    source: "github:OpenHands/extensions",
+    source: "github:Handyst/extensions",
     ref: null,
     repo_path: "plugins/demo-plugin",
     installed: false,
@@ -60,7 +60,7 @@ function buildInstalledPlugin(
     version: "1.0.0",
     description: "A demo plugin",
     enabled: true,
-    source: "github:OpenHands/extensions",
+    source: "github:Handyst/extensions",
     resolved_ref: null,
     repo_path: "plugins/demo-plugin",
     installed_at: "2026-06-01T00:00:00Z",
@@ -139,7 +139,7 @@ describe("SkillsPluginsScreen", () => {
 
     await waitFor(() =>
       expect(installSpy).toHaveBeenCalledWith({
-        source: "github:OpenHands/extensions",
+        source: "github:Handyst/extensions",
         ref: null,
         repo_path: "plugins/demo-plugin",
       }),
@@ -295,7 +295,7 @@ describe("SkillsPluginsScreen", () => {
     expect(navigateMock).toHaveBeenCalledWith(
       buildPluginLaunchPath([
         {
-          source: "github:OpenHands/extensions",
+          source: "github:Handyst/extensions",
           ref: null,
           repo_path: "plugins/demo-plugin",
         },

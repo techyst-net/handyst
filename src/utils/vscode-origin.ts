@@ -12,7 +12,7 @@
  *   - **Public mode** (`docker/entrypoint.sh`, `--auth-required`): a second
  *     static server on its own port, sharing the same agent-server but
  *     deliberately without the editor route, because the editor's connection
- *     token is the session API key (OpenHands/software-agent-sdk#4317) and that
+ *     token is the session API key (Handyst/software-agent-sdk#4317) and that
  *     origin exists to test the *unauthenticated* case.
  *   - **Extra backends** (`scripts/dev-extra-backend.mjs`): a second
  *     agent-server registered from a browser whose origin belongs to another

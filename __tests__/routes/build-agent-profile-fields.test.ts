@@ -91,7 +91,7 @@ describe("buildAgentProfileFields — ACP", () => {
   });
 });
 
-describe("buildAgentProfileFields — OpenHands", () => {
+describe("buildAgentProfileFields — Handyst", () => {
   const baseOh = {
     isAcp: false,
     selectedPreset: "custom",

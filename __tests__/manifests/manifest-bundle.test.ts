@@ -71,7 +71,7 @@ function bundleEntry(overrides = {}) {
   });
 }
 
-const VALUES = { repository: "OpenHands/automation", schedule: "*/15 * * * *" };
+const VALUES = { repository: "Handyst/automation", schedule: "*/15 * * * *" };
 
 describe("packBundle", () => {
   it("packs the entry's files with the config the form rendered", async () => {
@@ -82,7 +82,7 @@ describe("packBundle", () => {
     const contents = readArchive(archive);
     expect(contents["main.py"]).toBe("print('watching')\n");
     expect(JSON.parse(contents["config.json"])).toEqual({
-      repos: ["OpenHands/automation"],
+      repos: ["Handyst/automation"],
       max_per_run: 3,
       dry_run: false,
     });
@@ -112,13 +112,13 @@ describe("packBundle", () => {
     const contents = readArchive(
       await packBundle(entry, {
         ...VALUES,
-        repository: ["OpenHands/automation", "OpenHands/extensions"],
+        repository: ["Handyst/automation", "Handyst/extensions"],
       }),
     );
 
     // Assert
     expect(JSON.parse(contents["config.json"])).toEqual({
-      repos: ["OpenHands/automation", "OpenHands/extensions"],
+      repos: ["Handyst/automation", "Handyst/extensions"],
     });
   });
 

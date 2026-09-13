@@ -26,7 +26,7 @@ const LOCAL_BACKEND: Backend = {
 
 const CLOUD_BACKEND: Backend = {
   id: "cloud-1",
-  name: "OpenHands Cloud",
+  name: "Handyst Cloud",
   host: "https://app.all-hands.dev",
   apiKey: "bearer-token",
   kind: "cloud",
@@ -121,13 +121,13 @@ describe("SetupFormField repo-picker", () => {
     // Act
     await user.type(
       screen.getByTestId("setup-field-repository"),
-      "OpenHands/agent-server-gui",
+      "Handyst/agent-server-gui",
     );
 
     // Assert — the required field is answerable, in the `owner/repo` shape the
     // create payload sends as `repos[0].url`.
     expect(onValueChange).toHaveBeenLastCalledWith(
-      "OpenHands/agent-server-gui",
+      "Handyst/agent-server-gui",
     );
   });
 
@@ -141,19 +141,19 @@ describe("SetupFormField repo-picker", () => {
     // Act
     await user.type(
       screen.getByTestId("setup-field-repository"),
-      "OpenHands/automation",
+      "Handyst/automation",
     );
     await user.click(screen.getByTestId("setup-list-repository-add"));
     await user.type(
       screen.getByTestId("setup-field-repository"),
-      "OpenHands/extensions",
+      "Handyst/extensions",
     );
     await user.click(screen.getByTestId("setup-list-repository-add"));
 
     // Assert — one automation polling both, which is what the entry supports.
     expect(onValueChange).toHaveBeenLastCalledWith([
-      "OpenHands/automation",
-      "OpenHands/extensions",
+      "Handyst/automation",
+      "Handyst/extensions",
     ]);
   });
 
@@ -167,24 +167,24 @@ describe("SetupFormField repo-picker", () => {
     // Act
     await user.type(
       screen.getByTestId("setup-field-repository"),
-      "OpenHands/automation{Enter}",
+      "Handyst/automation{Enter}",
     );
 
     // Assert
-    expect(onValueChange).toHaveBeenLastCalledWith(["OpenHands/automation"]);
+    expect(onValueChange).toHaveBeenLastCalledWith(["Handyst/automation"]);
   });
 
   it("does not add a repository already in the list", async () => {
     // Arrange — adding it twice polls it twice per run for one result.
     const { onValueChange, user } = renderRepositoryField(LOCAL_BACKEND, {
       field: REPOSITORIES_FIELD,
-      initialValue: ["OpenHands/automation"],
+      initialValue: ["Handyst/automation"],
     });
 
     // Act
     await user.type(
       screen.getByTestId("setup-field-repository"),
-      "OpenHands/automation{Enter}",
+      "Handyst/automation{Enter}",
     );
 
     // Assert
@@ -195,16 +195,16 @@ describe("SetupFormField repo-picker", () => {
     // Arrange
     const { onValueChange, user } = renderRepositoryField(LOCAL_BACKEND, {
       field: REPOSITORIES_FIELD,
-      initialValue: ["OpenHands/automation", "OpenHands/extensions"],
+      initialValue: ["Handyst/automation", "Handyst/extensions"],
     });
 
     // Act
     await user.click(
-      screen.getByTestId("setup-list-repository-remove-OpenHands/automation"),
+      screen.getByTestId("setup-list-repository-remove-Handyst/automation"),
     );
 
     // Assert
-    expect(onValueChange).toHaveBeenLastCalledWith(["OpenHands/extensions"]);
+    expect(onValueChange).toHaveBeenLastCalledWith(["Handyst/extensions"]);
   });
 
   it("names the input the entry's own label for a screen reader", () => {
@@ -226,20 +226,20 @@ describe("SetupFormField repo-picker", () => {
     // user saying they answered it.
     const { onValueChange, user } = renderRepositoryField(LOCAL_BACKEND, {
       field: REPOSITORIES_FIELD,
-      initialValue: ["OpenHands/automation"],
+      initialValue: ["Handyst/automation"],
     });
 
     // Act
     await user.type(
       screen.getByTestId("setup-field-repository"),
-      "OpenHands/extensions",
+      "Handyst/extensions",
     );
     await user.tab();
 
     // Assert
     expect(onValueChange).toHaveBeenLastCalledWith([
-      "OpenHands/automation",
-      "OpenHands/extensions",
+      "Handyst/automation",
+      "Handyst/extensions",
     ]);
   });
 

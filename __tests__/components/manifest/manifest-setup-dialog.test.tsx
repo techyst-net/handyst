@@ -101,7 +101,7 @@ function renderDialog(entry: SetupEntry = ENTRY) {
 async function fillForm(user: ReturnType<typeof userEvent.setup>) {
   await user.type(
     screen.getByTestId("setup-field-repository"),
-    "OpenHands/agent-server-gui",
+    "Handyst/agent-server-gui",
   );
   await user.type(screen.getByTestId("setup-field-widgetName"), "Widgets");
 }
@@ -222,9 +222,9 @@ describe("SetupDialog", () => {
       }),
     );
     expect(mocks.runAction.mock.calls[0][2]).toEqual({
-      name: "Widget monitor - OpenHands/agent-server-gui",
-      prompt: "Report on Widgets in OpenHands/agent-server-gui.",
-      repos: [{ url: "OpenHands/agent-server-gui", provider: "github" }],
+      name: "Widget monitor - Handyst/agent-server-gui",
+      prompt: "Report on Widgets in Handyst/agent-server-gui.",
+      repos: [{ url: "Handyst/agent-server-gui", provider: "github" }],
       trigger: { type: "cron", schedule: "*/15 * * * *" },
     });
   });
@@ -277,7 +277,7 @@ describe("SetupDialog", () => {
     await user.type(screen.getByTestId("setup-field-widgetName"), "Widgets");
     await user.type(
       screen.getByTestId("setup-field-repository"),
-      "OpenHands/automation",
+      "Handyst/automation",
     );
 
     // Act — Continue, without pressing Add or Enter first.
@@ -288,7 +288,7 @@ describe("SetupDialog", () => {
       expect(screen.getByTestId("setup-review")).toBeInTheDocument(),
     );
     expect(screen.getByTestId("setup-review")).toHaveTextContent(
-      "OpenHands/automation",
+      "Handyst/automation",
     );
   });
 

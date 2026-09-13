@@ -82,7 +82,7 @@ ARG VITE_POSTHOG_API_KEY=""
 ARG AGENT_CANVAS_VERSION=dev
 LABEL org.opencontainers.image.title="agent-canvas"
 LABEL org.opencontainers.image.description="All-in-one agent-canvas: Agent Server + Automation + Frontend"
-LABEL org.opencontainers.image.source="https://github.com/OpenHands/OpenHands"
+LABEL org.opencontainers.image.source="https://github.com/Handyst/Handyst"
 LABEL org.opencontainers.image.version="${AGENT_CANVAS_VERSION}"
 LABEL org.opencontainers.image.revision="${OPENHANDS_BUILD_GIT_SHA}"
 
@@ -109,7 +109,7 @@ RUN uv pip install --system "openhands-automation==${AUTOMATION_VERSION}" 2>/dev
     || pip install --no-cache-dir "openhands-automation==${AUTOMATION_VERSION}"
 
 RUN if [ -n "${AGENT_SERVER_SDK_GIT_REF}" ]; then \
-      BASE_GIT_URL="git+https://github.com/OpenHands/software-agent-sdk@${AGENT_SERVER_SDK_GIT_REF}" && \
+      BASE_GIT_URL="git+https://github.com/Handyst/software-agent-sdk@${AGENT_SERVER_SDK_GIT_REF}" && \
       uv pip install --system --force-reinstall \
         "${BASE_GIT_URL}#subdirectory=openhands-sdk" \
         "${BASE_GIT_URL}#subdirectory=openhands-tools" \

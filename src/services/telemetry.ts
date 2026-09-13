@@ -12,12 +12,12 @@
  * - Users can opt out of all future tracking by declining consent.
  *
  * AD BLOCKER BYPASS:
- * By default, telemetry is routed through OpenHands' reverse proxy (z.openhands.dev)
+ * By default, telemetry is routed through Handyst' reverse proxy (z.openhands.dev)
  * to avoid being blocked by ad blockers. Library consumers can override this with:
  * - VITE_POSTHOG_HOST: Custom proxy URL or direct PostHog URL
  * - VITE_POSTHOG_UI_HOST: PostHog UI host (defaults to https://us.posthog.com)
  *
- * IMPORTANT: By default, telemetry is sent to the OpenHands PostHog project.
+ * IMPORTANT: By default, telemetry is sent to the Handyst PostHog project.
  * Source builds can override this with VITE_POSTHOG_API_KEY. Precompiled
  * library consumers can pass the same settings to configureTelemetry().
  *
@@ -64,7 +64,7 @@ const DEFAULT_POSTHOG_API_KEY: string =
   (import.meta.env.VITE_POSTHOG_API_KEY as string | undefined) ||
   defaults.telemetry.posthogApiKey;
 
-// Default to OpenHands' reverse proxy to bypass ad blockers.
+// Default to Handyst' reverse proxy to bypass ad blockers.
 // The proxy at z.openhands.dev routes to PostHog's US region.
 // Library consumers can override this with their own proxy or direct PostHog URL.
 const DEFAULT_POSTHOG_HOST =

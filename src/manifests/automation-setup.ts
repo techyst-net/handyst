@@ -7,7 +7,7 @@
  * automations.
  *
  * The algorithm mirrors `tests/test_automation_setup.py::_render_payload` in
- * `OpenHands/extensions`, which is the authoritative reference: it produces the
+ * `Handyst/extensions`, which is the authoritative reference: it produces the
  * request bodies published in that repository's contract fixtures, and those
  * were verified against the live service. The create model is `extra="forbid"`,
  * so any divergence is a hard 422 rather than a dropped field.

@@ -2,7 +2,7 @@
 
 ## General
 
-- This repository is the OpenHands frontend.
+- This repository is the Handyst frontend.
 - Frontend API adaptation lives mainly in `src/api/`:
   - `option-service` fabricates a web-client config and reads models/providers through `@openhands/typescript-client` LLM endpoints.
   - `settings-service` uses `@openhands/typescript-client` settings APIs for persistence; reads schemas from `/api/settings/agent-schema` and `/api/settings/conversation-schema`, fetches settings with optional `X-Expose-Secrets: encrypted` header for conversation start payloads, and saves settings via PATCH with diffs.
@@ -21,16 +21,16 @@
 
 ## Repository Map — what belongs where
 
-This repo (`OpenHands/OpenHands`) is **only the agent-canvas frontend**. It is one
+This repo (`Handyst/Handyst`) is **only the agent-canvas frontend**. It is one
 piece of a multi-repo system. Before adding code here, check the change belongs in
 *this* repo — several kinds of work belong in a sibling repo instead.
 
 | Repo | Owns | Add code here when… |
 |------|------|---------------------|
-| **`OpenHands/OpenHands`** (this repo) | The React/TypeScript **frontend** (agent-canvas): UI, routes, frontend services in `src/api/` that *consume* backend APIs. | You are changing UI, frontend state, or how the frontend *calls* an existing backend endpoint. |
-| **`OpenHands/software-agent-sdk`** | The Python **SDK + agent-server**: agents, tools, conversations, events, and the REST/WebSocket **API surface** (`openhands-sdk`, `openhands-tools`, `openhands-agent-server`, `openhands-workspace`). | You are adding or changing a backend endpoint, agent/tool behaviour, or server-side logic. New API **endpoints** live here, not in the frontend. |
-| **`OpenHands/typescript-client`** (`@openhands/typescript-client`) | The generated/maintained **TypeScript client** that mirrors the agent-server API. The frontend's *only* sanctioned way to reach the agent-server (see "API Access Rules"). | You are adding client-side **access to an agent-server endpoint** (typed client method, request/response types). API-access code belongs here, **not** re-implemented in this repo. |
-| **`OpenHands/extensions`** (`@openhands/extensions`) | Public **skills, automations, and integrations** (loaded here at build time via `SKILLS_CATALOG`). | You are adding or editing a skill, automation, or MCP integration. |
+| **`Handyst/Handyst`** (this repo) | The React/TypeScript **frontend** (agent-canvas): UI, routes, frontend services in `src/api/` that *consume* backend APIs. | You are changing UI, frontend state, or how the frontend *calls* an existing backend endpoint. |
+| **`Handyst/software-agent-sdk`** | The Python **SDK + agent-server**: agents, tools, conversations, events, and the REST/WebSocket **API surface** (`openhands-sdk`, `openhands-tools`, `openhands-agent-server`, `openhands-workspace`). | You are adding or changing a backend endpoint, agent/tool behaviour, or server-side logic. New API **endpoints** live here, not in the frontend. |
+| **`Handyst/typescript-client`** (`@openhands/typescript-client`) | The generated/maintained **TypeScript client** that mirrors the agent-server API. The frontend's *only* sanctioned way to reach the agent-server (see "API Access Rules"). | You are adding client-side **access to an agent-server endpoint** (typed client method, request/response types). API-access code belongs here, **not** re-implemented in this repo. |
+| **`Handyst/extensions`** (`@openhands/extensions`) | Public **skills, automations, and integrations** (loaded here at build time via `SKILLS_CATALOG`). | You are adding or editing a skill, automation, or MCP integration. |
 
 Common mis-placements to avoid:
 
@@ -46,10 +46,10 @@ The four repositories have distinct ownership boundaries:
 
 | Repository | Owns |
 |---|---|
-| [`OpenHands/OpenHands`](https://github.com/OpenHands/OpenHands) | Agent Canvas frontend, user-facing control center, backend selection, and local-stack orchestration. |
-| [`OpenHands/software-agent-sdk`](https://github.com/OpenHands/software-agent-sdk) | Python SDK, Agent Server, agent/tool behavior, conversations, workspaces, events, and the canonical server API. |
-| [`OpenHands/typescript-client`](https://github.com/OpenHands/typescript-client) | Browser-compatible TypeScript client and generated/maintained types for the Agent Server API. |
-| [`OpenHands/automation`](https://github.com/OpenHands/automation) | Automation definitions, scheduling, webhooks, run history, and dispatching. It manages when automations run; the Agent Server/SDK executes them. |
+| [`Handyst/Handyst`](https://github.com/Handyst/Handyst) | Agent Canvas frontend, user-facing control center, backend selection, and local-stack orchestration. |
+| [`Handyst/software-agent-sdk`](https://github.com/Handyst/software-agent-sdk) | Python SDK, Agent Server, agent/tool behavior, conversations, workspaces, events, and the canonical server API. |
+| [`Handyst/typescript-client`](https://github.com/Handyst/typescript-client) | Browser-compatible TypeScript client and generated/maintained types for the Agent Server API. |
+| [`Handyst/automation`](https://github.com/Handyst/automation) | Automation definitions, scheduling, webhooks, run history, and dispatching. It manages when automations run; the Agent Server/SDK executes them. |
 
 The usual dependency direction is `software-agent-sdk` / Agent Server → OpenAPI contract → `typescript-client` → Agent Canvas. Automation scheduling and dispatching flow from Agent Canvas to `automation`, which starts work on the Agent Server/SDK. Put new server behavior and endpoints in `software-agent-sdk`, client access in `typescript-client`, UI and frontend integration in this repository, and scheduling/webhook lifecycle behavior in `automation`.
 
@@ -81,7 +81,7 @@ One Canvas-owned PostHog client owns telemetry and app analytics.
 - A business milestone has one canonical event capture. Do not conditionally switch between telemetry and app clients or emit duplicate events.
 
 ### Cloud funnel observability
-- OAuth device authorization and Cloud conversation-start requests include the coarse `X-OpenHands-Client: agent_canvas` and `X-OpenHands-Client-Version` headers from `src/api/client-source.ts`. Never put device codes, API keys, conversation content, raw hosts, or other user data in these headers.
+- OAuth device authorization and Cloud conversation-start requests include the coarse `X-Handyst-Client: agent_canvas` and `X-Handyst-Client-Version` headers from `src/api/client-source.ts`. Never put device codes, API keys, conversation content, raw hosts, or other user data in these headers.
 - Production ingress must retain those two headers as structured Datadog facets before source-specific operational queries will work.
 - The consented OSS funnel uses typed `cloud_device_authorization_started`, `cloud_device_authorization_succeeded`, and `cloud_conversation_ready` events from `cloud-funnel-analytics.ts`; React emits the canonical `backend_added` event through `useTracking`.
 
@@ -121,7 +121,7 @@ preview action CTA intentionally share one `link_id` — same destination):
 | Schedule a task | `schedule_task` / `automation` / internal | `open_docs` |
 | Customize your agent | `customize_agent` / `settings` / internal | `open_docs` |
 | Connect an MCP integration | `connect_mcp` / `integration` / internal | `open_docs` |
-| Join the OpenHands Slack | `join_slack` / `community` / external | `open_docs` |
+| Join the Handyst Slack | `join_slack` / `community` / external | `open_docs` |
 
 Excluded CTAs (per the one-canonical-capture rule above):
 - Onboarding-modal wizard controls (back/next/skip/close, agent cards) →
@@ -164,7 +164,7 @@ The `runtime_services` value is a JSON object of:
   "mode": "dev:automation",
   "services": {
     "agent_server": {
-      "description": "The OpenHands Agent Server this agent is running inside. ...",
+      "description": "The Handyst Agent Server this agent is running inside. ...",
       "url_from_agent": "http://localhost:18000"
     },
     "ingress": {
@@ -177,7 +177,7 @@ The `runtime_services` value is a JSON object of:
       "url_from_agent": "http://localhost:3001"
     },
     "automation": {
-      "description": "OpenHands Automations service. All routes are mounted under '/api/automation'. Authenticate with header 'X-Session-API-Key: $OPENHANDS_AUTOMATION_API_KEY'.",
+      "description": "Handyst Automations service. All routes are mounted under '/api/automation'. Authenticate with header 'X-Session-API-Key: $OPENHANDS_AUTOMATION_API_KEY'.",
       "url_from_agent": "http://localhost:18001",
       "api_prefix": "/api/automation",
       "docs_url": "http://localhost:18001/api/automation/docs",
@@ -199,13 +199,13 @@ The following services are reachable from your sandbox. URLs are written
 from your point of view (i.e., as you should curl/fetch them).
 
 * Agent Server (you): http://localhost:18000
-    The OpenHands Agent Server this agent is running inside. Tool calls (terminal, file_editor, browser, etc.) execute here.
+    The Handyst Agent Server this agent is running inside. Tool calls (terminal, file_editor, browser, etc.) execute here.
 * Ingress: http://localhost:8000
     Unified entry point. Routes /api/automation/* to the automation backend, /api/* and /sockets to the agent-server, and /* to the frontend.
 * Frontend: http://localhost:3001
     Vite dev server hosting the agent-canvas frontend.
 * Automation backend: http://localhost:18001
-    OpenHands Automations service. All routes are mounted under '/api/automation'. Authenticate with header 'X-Session-API-Key: $OPENHANDS_AUTOMATION_API_KEY'.
+    Handyst Automations service. All routes are mounted under '/api/automation'. Authenticate with header 'X-Session-API-Key: $OPENHANDS_AUTOMATION_API_KEY'.
     Docs:    http://localhost:18001/api/automation/docs
     OpenAPI: http://localhost:18001/api/automation/openapi.json
     Auth:    header 'X-Session-API-Key: $OPENHANDS_AUTOMATION_API_KEY'
@@ -283,7 +283,7 @@ you are running inside of — NOT the automation backend.
 - **Docker image**: Set `MOCK_LLM_DOCKER_IMAGE` to the image tag (default: `ghcr.io/openhands/agent-canvas:latest`). The container is started with `--rm --network host` and a unique `--name` for cleanup.
 - **State isolation**: The Docker container uses its internal state directory (no host mount needed for tests). Each test run starts a fresh container.
 - **Skill test volume mounts**: Tests that create files the agent-server needs to read (skill repos, user skills) require Docker volume mounts because the container has an isolated filesystem. The Docker config mounts `.tmp/mock-llm-skill-repos/` → `/tmp/mock-llm-skill-repos/` for project skills and `.tmp/mock-llm-user-skills/` → `/home/openhands/.openhands/skills/` for user skills. Env vars `MOCK_LLM_SKILL_REPOS_CONTAINER_DIR` and `MOCK_LLM_USER_SKILLS_HOST_DIR` tell `skill-test-helpers.ts` which paths to use for agent-server API registration vs. host-side file operations.
-- CI workflow: `.github/workflows/mock-llm-docker-e2e.yml` has three triggers — all pull the already-built image from GHCR (no rebuild): (1) `workflow_run` fires automatically after the `Docker` workflow completes on main (no path filter — always validates the published image); (2) `pull_request` fires on PR commits (opened, synchronize, reopened) without `paths:` filters, then its lightweight `detect-pr-changes` job skips the heavy Docker E2E job for docs-only/non-stack PRs while still producing a completed required-check context; (3) `workflow_dispatch` accepts a custom `docker_image` input (always runs). The image tag is derived from the commit SHA (`ghcr.io/openhands/agent-canvas:sha-<short>-amd64`). Fork PRs are skipped (no GHCR push). When the PR description links an `OpenHands/software-agent-sdk` PR, the Docker E2E job installs the host-side mock LLM SDK package from that SDK PR branch and exposes the same branch as `OH_AGENT_SERVER_GIT_REF` for partial-stack specs. Report artifacts go to `test-results-mock-llm-docker/` and `playwright-report-mock-llm-docker/`.
+- CI workflow: `.github/workflows/mock-llm-docker-e2e.yml` has three triggers — all pull the already-built image from GHCR (no rebuild): (1) `workflow_run` fires automatically after the `Docker` workflow completes on main (no path filter — always validates the published image); (2) `pull_request` fires on PR commits (opened, synchronize, reopened) without `paths:` filters, then its lightweight `detect-pr-changes` job skips the heavy Docker E2E job for docs-only/non-stack PRs while still producing a completed required-check context; (3) `workflow_dispatch` accepts a custom `docker_image` input (always runs). The image tag is derived from the commit SHA (`ghcr.io/openhands/agent-canvas:sha-<short>-amd64`). Fork PRs are skipped (no GHCR push). When the PR description links an `Handyst/software-agent-sdk` PR, the Docker E2E job installs the host-side mock LLM SDK package from that SDK PR branch and exposes the same branch as `OH_AGENT_SERVER_GIT_REF` for partial-stack specs. Report artifacts go to `test-results-mock-llm-docker/` and `playwright-report-mock-llm-docker/`.
 
 ## Debugging E2E Test Failures
 
@@ -295,7 +295,7 @@ The mock-LLM E2E workflow posts a structured comment on the PR with a test resul
 ### 2. Download CI artifacts
 Every failing test run uploads artifacts (`mock-llm-e2e-results` for npm, `mock-llm-docker-e2e-results` for Docker). Download them with:
 ```bash
-gh run download <run_id> --repo OpenHands/agent-canvas --name mock-llm-e2e-results --dir /tmp/artifacts
+gh run download <run_id> --repo Handyst/agent-canvas --name mock-llm-e2e-results --dir /tmp/artifacts
 ```
 Artifacts contain:
 - `test-results-mock-llm/` — per-test directories with `test-failed-N.png` (screenshot at failure) and `error-context.md` (Playwright page snapshot as YAML accessibility tree + test source with the failing line marked)
@@ -533,9 +533,9 @@ When adding code that needs a new string, decide up front which rule it falls un
 - Use `@openhands/typescript-client` classes directly for agent-server-backed REST/workspace/event/VS Code calls. Centralize host/session API key/working-directory option assembly through `src/api/agent-server-client-options.ts`; the backend fallback policy itself lives in `src/api/backend-registry/active-store.ts`.
 - Local verification/build gotchas:
   - `npm run typecheck` assumes generated translation types exist; run `npm run make-i18n` first if `src/i18n/declaration.ts` is missing.
-- Original OpenHands hosted routes were removed, while current Cloud behavior is implemented explicitly through the backend registry and `src/api/cloud/`. Use `src/routes.ts` as the source of truth and do not restore old project-management, invitation, account, or git-settings routes from upstream without restoring their full API and i18n dependencies.
+- Original Handyst hosted routes were removed, while current Cloud behavior is implemented explicitly through the backend registry and `src/api/cloud/`. Use `src/routes.ts` as the source of truth and do not restore old project-management, invitation, account, or git-settings routes from upstream without restoring their full API and i18n dependencies.
 
-- `npm run dev:mock` needs MSW handlers for the direct agent-server routes used by the adapted frontend, not the original OpenHands mock paths. Key routes that must stay covered are:
+- `npm run dev:mock` needs MSW handlers for the direct agent-server routes used by the adapted frontend, not the original Handyst mock paths. Key routes that must stay covered are:
   - bootstrap/model loading: `/server_info`, `/api/llm/models/verified`, `/api/llm/providers`
   - settings schemas: `/api/settings/agent-schema`, `/api/settings/conversation-schema`
   - settings CRUD: `GET /api/settings`, `PATCH /api/settings`
@@ -605,9 +605,9 @@ When adding code that needs a new string, decide up front which rule it falls un
 - Vercel deployment note: React Router builds for this repo must keep `build/client` intact on actual Vercel builds and include `presets: [vercelPreset()]` from `@vercel/react-router/vite`; flattening `build/client` during a Vercel build produces deployments with empty outputs (`routes: null`, no static files) and a production 404.
 
 - The repo should include a root `LICENSE` file to satisfy the incubator-program requirements.
-- OpenHands repo bootstrap files live under `.openhands/`:
+- Handyst repo bootstrap files live under `.openhands/`:
   - `.openhands/setup.sh` installs `uv` (via `curl -LsSf https://astral.sh/uv/install.sh | sh`) if not present, installs frontend dependencies with `npm ci` when needed, creates `.env` from `.env.sample` if missing, appends `VITE_WORKING_DIR` for this repo when unset, and generates `src/i18n/declaration.ts` via `npm run make-i18n`.
-- The repo now includes `.agents/skills/custom-codereview-guide.md`, adapted from `OpenHands/software-agent-sdk`, to force PR reviews to always leave either an APPROVE or COMMENT review instead of silently finishing with no review object.
+- The repo now includes `.agents/skills/custom-codereview-guide.md`, adapted from `Handyst/software-agent-sdk`, to force PR reviews to always leave either an APPROVE or COMMENT review instead of silently finishing with no review object.
 
 - HeroUI rollback / migration notes:
   - The attempted HeroUI v3 upgrade changed global theme wiring and homepage design tokens enough that the repo currently prefers `@heroui/react@2.8.10` until a broader visual validation pass is done.
@@ -675,13 +675,13 @@ When adding code that needs a new string, decide up front which rule it falls un
 
 - Changes tab / `FileDiffViewer` deleted-file note: the agent-server's `/api/git/diff` endpoint calls `path.exists()` first (see `openhands-sdk/openhands/sdk/git/git_diff.py` → `get_git_diff`), so requesting a diff for a `D` (deleted) file returns `GitPathError` → HTTP 400 and trips the global QueryCache error toast. `useUnifiedGitDiff` disables the query when `type === "D"` and `FileDiffViewer` renders a localized "file deleted" placeholder (`DIFF_VIEWER$FILE_DELETED`, `data-testid="file-deleted-message"`) instead of the view-mode toolbar / Monaco editor for that case.
 
-- Onboarding modal: `src/components/features/onboarding/onboarding-modal.tsx` is rendered by `<OnboardingHost />` and normally gated by the `openhands-onboarded` localStorage flag. `OnboardingHost` also suppresses the modal, without writing that flag, when any active Cloud backend's settings report a usable LLM (non-empty model plus API-key or subscription auth); this readiness exception must not apply to Local backends. It tracks logical phases (`backend`, `agent`, `setup`, `hello`) rather than fixed numeric steps; the backend phase may be omitted for an already configured backend. Agent choices are derived from `ACP_PROVIDERS` plus OpenHands. The setup phase renders `SetupLlmStep` for OpenHands or `SetupAcpSecretsStep` for ACP providers. Keep the phase-based navigation so adding or removing the backend slide cannot move users to the wrong step.
+- Onboarding modal: `src/components/features/onboarding/onboarding-modal.tsx` is rendered by `<OnboardingHost />` and normally gated by the `openhands-onboarded` localStorage flag. `OnboardingHost` also suppresses the modal, without writing that flag, when any active Cloud backend's settings report a usable LLM (non-empty model plus API-key or subscription auth); this readiness exception must not apply to Local backends. It tracks logical phases (`backend`, `agent`, `setup`, `hello`) rather than fixed numeric steps; the backend phase may be omitted for an already configured backend. Agent choices are derived from `ACP_PROVIDERS` plus Handyst. The setup phase renders `SetupLlmStep` for Handyst or `SetupAcpSecretsStep` for ACP providers. Keep the phase-based navigation so adding or removing the backend slide cannot move users to the wrong step.
 
 - Files tab diff-view default logic: keyed off `useHasAttachedSource()` (`src/hooks/use-has-attached-source.ts`), which is true when the user explicitly attached _either_ a repo (`conversation.selected_repository`) _or_ a local workspace (`getStoredConversationMetadata(id).selected_workspace`, persisted by `createConversation` when `workingDirOverride` is supplied). The agent-server pre-initialises every conversation workspace as a git worktree for its own change tracking, so do NOT use a filesystem probe (`git status` / `useUnifiedGetGitChanges`) as the attachment signal — that was tried in earlier iterations and made every fresh no-attachment conversation incorrectly default to diff view. The companion `useHasGitCommits` probe (`src/hooks/query/use-has-git-commits.ts`) then suppresses diff view for attached-but-empty cases (unborn HEAD, non-git workspace).
 
 - Collapsible thinking: `ThinkAction` events and LLM extended reasoning (`reasoning_content` / `thinking_blocks` on `ActionEvent`) are rendered as collapsible sections via `CollapsibleThinking` (`src/components/conversation-events/chat/event-message-components/collapsible-thinking.tsx`). Collapsed by default to keep the chat compact — the thinking is often in English regardless of the user's conversation language. The `getReasoningContent()` helper in `event-thought-helpers.ts` extracts the content, preferring `reasoning_content` (plain string) and falling back to Anthropic `thinking_blocks`. i18n keys: `THINKING$TITLE`, `THINKING$EXPAND`, `THINKING$COLLAPSE`. Tests: `__tests__/components/conversation-events/chat/event-message-think-action.test.tsx`.
 
-- Agent delegation settings: the `Settings > Agent` page (`src/routes/agent-settings.tsx`) is intentionally NOT a `SdkSectionPage` wrapper. It mirrors upstream OpenHands#14418 — it flatMaps every section of `agent_settings_schema` and finds the `enable_sub_agents` field by key, so it works regardless of which section the real backend exposes the field in. Don't refactor it back to `SdkSectionPage` unless you also know the real backend's section name and add a fallback for the live "SDK schema unavailable" path. The toggle persists via `agent_settings_diff`. Nav item lives in `OSS_NAV_ITEMS` (settings-nav.tsx) with the robot icon (`SETTINGS$NAV_AGENT`). The mock schema in `settings-handlers.ts` puts the field in a `general` section. **Client-side gate**: `getAgentTools()` in `agent-server-adapter.ts` only attaches `task_tool_set` to new conversations when `agent_settings.enable_sub_agents === true`. Without that gate the agent server would still receive the tool whenever it advertised it in `/api/server_info`, so the toggle had no effect on running conversations.
+- Agent delegation settings: the `Settings > Agent` page (`src/routes/agent-settings.tsx`) is intentionally NOT a `SdkSectionPage` wrapper. It mirrors upstream Handyst#14418 — it flatMaps every section of `agent_settings_schema` and finds the `enable_sub_agents` field by key, so it works regardless of which section the real backend exposes the field in. Don't refactor it back to `SdkSectionPage` unless you also know the real backend's section name and add a fallback for the live "SDK schema unavailable" path. The toggle persists via `agent_settings_diff`. Nav item lives in `OSS_NAV_ITEMS` (settings-nav.tsx) with the robot icon (`SETTINGS$NAV_AGENT`). The mock schema in `settings-handlers.ts` puts the field in a `general` section. **Client-side gate**: `getAgentTools()` in `agent-server-adapter.ts` only attaches `task_tool_set` to new conversations when `agent_settings.enable_sub_agents === true`. Without that gate the agent server would still receive the tool whenever it advertised it in `/api/server_info`, so the toggle had no effect on running conversations.
 
 - Settings naming is backend-aware today: local `/settings` is profile-oriented (`use-settings-nav-items.ts` renames the first settings item/title/subtitle to `LLM Profiles` and `chat-input-model.tsx` / `chat-input-actions.tsx` link there as `LLM Profiles`), while cloud keeps the generic `LLM Settings` copy because cloud still edits raw settings rather than saved profiles. The local profile editor (`llm-settings-local-view.tsx`) should keep explicit create/edit profile headings plus helper text so users know they are saving a profile, not mutating the current conversation directly.
 
@@ -693,7 +693,7 @@ When adding code that needs a new string, decide up front which rule it falls un
   - CI workflow: a `Read defaults from config/defaults.json` step uses `node -p` to extract values into `$GITHUB_OUTPUT`.
   - Dockerfile ARG defaults are kept as fallbacks for local `docker build` without the CI workflow; CI always passes `--build-arg` overrides from the JSON.
   - To bump a version, edit `config/defaults.json` only — the JS scripts, Docker build, and CI workflow all derive their values from it.
-- Docker all-in-one image: `.github/workflows/docker.yml` builds and publishes `ghcr.io/openhands/agent-canvas` — a combined image that bundles the agent-server (from `ghcr.io/openhands/agent-server`), the automation server (`openhands-automation` via pip), and the agent-canvas frontend (static build). The Dockerfile lives at `docker/Dockerfile`, the entrypoint at `docker/entrypoint.sh`. The workflow structure mirrors the SDK repo's `server.yml`: a `build-and-push-image` matrix job (2 × arch: amd64 on `ubuntu-24.04`, arm64 on `ubuntu-24.04-arm`) pushes arch-suffixed tags, then `merge-manifests` creates multi-arch manifests via `docker buildx imagetools create`, then `consolidate-build-info` aggregates artifacts, and `update-pr-description` updates the PR body (using `<!-- AGENT_CANVAS_DOCKER_START -->` / `<!-- AGENT_CANVAS_DOCKER_END -->` markers). The workflow triggers on push to main, `v*` tags (releases), PRs, and `workflow_dispatch`. On release tags it also pushes semver tags (e.g. `1.2.3`, `1.2`, `1`, `latest`). Fork PRs are skipped (no GHCR auth). On PRs that link an `OpenHands/software-agent-sdk` PR in the description, the Docker workflow uses that SDK PR's published branch image (`ghcr.io/openhands/agent-server:<branch-with-slashes-as-dashes>-python`) as the agent-server base image unless a `workflow_dispatch` input explicitly overrides it. The image exposes port 8000 as a unified entry point: `/api/automation/*` → automation (:18001), `/api/*` → agent-server (:18000), `/*` → static frontend. The Dockerfile accepts the public `VITE_POSTHOG_API_KEY` build arg; CI passes staging for PR/main images and production for tagged releases. The npm release workflow passes the same production key to both the app and library builds. The entrypoint auto-generates **both** the session API key and `OH_SECRET_KEY` (persisted to `~/.openhands/agent-canvas/session-api-key.txt` and `secret-key.txt` respectively) when none is provided, so the image runs secure by default. Users can override either via env var (`OH_SECRET_KEY`, `SESSION_API_KEY` / `OH_SESSION_API_KEYS_0`). `scripts/dev-safe.mjs` uses the same `secret-key.txt` file, so dev mode and Docker share the same key when both use the same `~/.openhands` directory.
+- Docker all-in-one image: `.github/workflows/docker.yml` builds and publishes `ghcr.io/openhands/agent-canvas` — a combined image that bundles the agent-server (from `ghcr.io/openhands/agent-server`), the automation server (`openhands-automation` via pip), and the agent-canvas frontend (static build). The Dockerfile lives at `docker/Dockerfile`, the entrypoint at `docker/entrypoint.sh`. The workflow structure mirrors the SDK repo's `server.yml`: a `build-and-push-image` matrix job (2 × arch: amd64 on `ubuntu-24.04`, arm64 on `ubuntu-24.04-arm`) pushes arch-suffixed tags, then `merge-manifests` creates multi-arch manifests via `docker buildx imagetools create`, then `consolidate-build-info` aggregates artifacts, and `update-pr-description` updates the PR body (using `<!-- AGENT_CANVAS_DOCKER_START -->` / `<!-- AGENT_CANVAS_DOCKER_END -->` markers). The workflow triggers on push to main, `v*` tags (releases), PRs, and `workflow_dispatch`. On release tags it also pushes semver tags (e.g. `1.2.3`, `1.2`, `1`, `latest`). Fork PRs are skipped (no GHCR auth). On PRs that link an `Handyst/software-agent-sdk` PR in the description, the Docker workflow uses that SDK PR's published branch image (`ghcr.io/openhands/agent-server:<branch-with-slashes-as-dashes>-python`) as the agent-server base image unless a `workflow_dispatch` input explicitly overrides it. The image exposes port 8000 as a unified entry point: `/api/automation/*` → automation (:18001), `/api/*` → agent-server (:18000), `/*` → static frontend. The Dockerfile accepts the public `VITE_POSTHOG_API_KEY` build arg; CI passes staging for PR/main images and production for tagged releases. The npm release workflow passes the same production key to both the app and library builds. The entrypoint auto-generates **both** the session API key and `OH_SECRET_KEY` (persisted to `~/.openhands/agent-canvas/session-api-key.txt` and `secret-key.txt` respectively) when none is provided, so the image runs secure by default. Users can override either via env var (`OH_SECRET_KEY`, `SESSION_API_KEY` / `OH_SESSION_API_KEYS_0`). `scripts/dev-safe.mjs` uses the same `secret-key.txt` file, so dev mode and Docker share the same key when both use the same `~/.openhands` directory.
 
 - Spec files live under `specs/`. Spec IDs are stable — never renumber. Mark deprecated specs with ~~strikethrough~~. Tag implementation code and tests with `// @spec BM-002 — Short title` comments so specs are grep-able across the codebase (`grep -rn '@spec BM-' src/ __tests__/`). Place the comment on the line immediately above the relevant code block or test. When multiple tests cover the same spec, use `it.each` if the test structure is identical.
 

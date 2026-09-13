@@ -83,7 +83,7 @@ describe("AgentSettingsScreen", () => {
     profileSupportsSwitchLlmToolMock.mockReturnValue(true);
   });
 
-  it("renders the agent type selector defaulting to OpenHands with sub-agents toggle", async () => {
+  it("renders the agent type selector defaulting to Handyst with sub-agents toggle", async () => {
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
       buildSettings({
         agent_settings: {
@@ -96,11 +96,11 @@ describe("AgentSettingsScreen", () => {
     renderAgentSettingsScreen();
     await screen.findByTestId("agent-settings-screen");
     expect(screen.getByTestId("agent-type-selector")).toBeInTheDocument();
-    // Sub-agents toggle visible on the OpenHands branch.
+    // Sub-agents toggle visible on the Handyst branch.
     expect(
       screen.getByTestId("agent-settings-enable-sub-agents"),
     ).toBeInTheDocument();
-    // ACP-only fields stay hidden on the OpenHands branch.
+    // ACP-only fields stay hidden on the Handyst branch.
     expect(screen.queryByTestId("agent-command-input")).not.toBeInTheDocument();
   });
 
@@ -128,7 +128,7 @@ describe("AgentSettingsScreen", () => {
     );
   });
 
-  it("saves enable_sub_agents when toggling on the OpenHands path", async () => {
+  it("saves enable_sub_agents when toggling on the Handyst path", async () => {
     const user = userEvent.setup();
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
       buildSettings({
@@ -165,7 +165,7 @@ describe("AgentSettingsScreen", () => {
     });
   });
 
-  it("renders the LLM-switching toggle on the OpenHands path and saves it when toggled off", async () => {
+  it("renders the LLM-switching toggle on the Handyst path and saves it when toggled off", async () => {
     const user = userEvent.setup();
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
       buildSettings({
@@ -234,7 +234,7 @@ describe("AgentSettingsScreen", () => {
     expect(
       screen.queryByTestId("agent-settings-enable-switch-llm-tool"),
     ).not.toBeInTheDocument();
-    // ...while the other OpenHands controls still render.
+    // ...while the other Handyst controls still render.
     expect(
       screen.getByTestId("agent-settings-enable-sub-agents"),
     ).toBeInTheDocument();
@@ -313,7 +313,7 @@ describe("AgentSettingsScreen", () => {
     ).toBeInTheDocument();
   });
 
-  it("saves tool_concurrency_limit when changed on the OpenHands path", async () => {
+  it("saves tool_concurrency_limit when changed on the Handyst path", async () => {
     const user = userEvent.setup();
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
       buildSettings({
@@ -624,7 +624,7 @@ describe("AgentSettingsScreen", () => {
     });
   });
 
-  it("clears ACP fields when switching back to OpenHands", async () => {
+  it("clears ACP fields when switching back to Handyst", async () => {
     const user = userEvent.setup();
     vi.spyOn(SettingsService, "getSettings").mockResolvedValue(
       buildSettings({

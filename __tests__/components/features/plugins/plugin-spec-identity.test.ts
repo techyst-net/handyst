@@ -11,7 +11,7 @@ import {
 const catalogPlugin: MarketplacePlugin = {
   name: "city-weather",
   description: "Weather plugin",
-  source: "github:OpenHands/extensions",
+  source: "github:Handyst/extensions",
   ref: null,
   repo_path: "plugins/city-weather",
   installed: false,
@@ -25,7 +25,7 @@ describe("plugin-spec-identity", () => {
 
     // Assert: only source/ref/repo_path survive — no name/description/parameters.
     expect(spec).toEqual({
-      source: "github:OpenHands/extensions",
+      source: "github:Handyst/extensions",
       ref: null,
       repo_path: "plugins/city-weather",
     });
@@ -46,7 +46,7 @@ describe("plugin-spec-identity", () => {
     // Assert
     expect(selected).toEqual([
       {
-        source: "github:OpenHands/extensions",
+        source: "github:Handyst/extensions",
         ref: null,
         repo_path: "plugins/city-weather",
       },

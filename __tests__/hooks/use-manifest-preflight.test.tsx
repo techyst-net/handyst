@@ -25,7 +25,7 @@ function httpFailure(status: number) {
 }
 
 const ENTRY = createSetupEntry();
-const VALUES = { repository: "OpenHands/agent-server-gui", widgetName: "W" };
+const VALUES = { repository: "Handyst/agent-server-gui", widgetName: "W" };
 
 function runPreflightAgainst(error: unknown) {
   vi.mocked(AutomationService.validateDraft).mockRejectedValue(error);

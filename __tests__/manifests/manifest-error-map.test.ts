@@ -6,9 +6,9 @@ import {
 
 /** The body the host derived, as the service received it. */
 const PAYLOAD = {
-  name: "PR Reviewer - OpenHands/agent-server-gui",
+  name: "PR Reviewer - Handyst/agent-server-gui",
   prompt: "Review pull requests labeled 'openhands-review'.",
-  repos: [{ url: "OpenHands/agent-server-gui", ref: "main" }],
+  repos: [{ url: "Handyst/agent-server-gui", ref: "main" }],
   trigger: { type: "cron", schedule: "0 0 31 2 *", timezone: "UTC" },
 };
 

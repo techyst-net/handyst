@@ -944,7 +944,7 @@ describe("ConversationCard", () => {
 
   describe("Agent chip", () => {
     // The agent chip is gated by the conversation panel's "Agent / model"
-    // toggle (``showLlmProfiles``) — one control for both ACP and OpenHands
+    // toggle (``showLlmProfiles``) — one control for both ACP and Handyst
     // cards. The renders below pass ``showLlmProfiles`` to exercise the chip;
     // the omitted-prop fallback is covered by the first two tests.
     it("hides the chip when showLlmProfiles is omitted for ACP", () => {
@@ -964,7 +964,7 @@ describe("ConversationCard", () => {
       ).not.toBeInTheDocument();
     });
 
-    it("hides the chip when showLlmProfiles is omitted for OpenHands", () => {
+    it("hides the chip when showLlmProfiles is omitted for Handyst", () => {
       renderWithProviders(
         <ConversationCard
           title="Conversation 1"
@@ -1094,10 +1094,10 @@ describe("ConversationCard", () => {
       ).toBeInTheDocument();
     });
 
-    it("renders the OpenHands logo + model name for native conversations", () => {
-      // With the chip toggle on, OpenHands native conversations show the
-      // OpenHands logo + the raw ``agent.llm.model`` string. A stray
-      // ``acp_server`` value on an OpenHands card must not flip the icon to
+    it("renders the Handyst logo + model name for native conversations", () => {
+      // With the chip toggle on, Handyst native conversations show the
+      // Handyst logo + the raw ``agent.llm.model`` string. A stray
+      // ``acp_server`` value on an Handyst card must not flip the icon to
       // the Claude/Codex/Gemini brand mark.
       renderWithProviders(
         <ConversationCard
@@ -1122,7 +1122,7 @@ describe("ConversationCard", () => {
       ).not.toBeInTheDocument();
     });
 
-    it("labels a free OpenHands route on native conversation chips", () => {
+    it("labels a free Handyst route on native conversation chips", () => {
       renderWithProviders(
         <ConversationCard
           title="Conversation 1"
@@ -1139,7 +1139,7 @@ describe("ConversationCard", () => {
       expect(chip).toHaveAttribute("title", "openhands/glm-5.2");
     });
 
-    it("hides the chip for OpenHands conversations with no model", () => {
+    it("hides the chip for Handyst conversations with no model", () => {
       // Toggle on, but no model string and no ACP server — nothing to
       // display, so the chip collapses rather than showing a bare logo.
       renderWithProviders(

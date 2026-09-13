@@ -10,7 +10,7 @@
  * Usage:
  *   node post-readiness-comment.mjs \
  *     --issue-number 123 \
- *     --repo OpenHands/OpenHands \
+ *     --repo Handyst/Handyst \
  *     --reasons-file /tmp/reasons.txt \
  *     --ready           # optional: post a "ready" message instead of "not ready"
  */

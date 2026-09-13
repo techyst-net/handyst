@@ -79,7 +79,7 @@ export function ChatInputActions({
     isPreStart &&
     !(conversationId?.startsWith("task-") ?? false) &&
     (agentProfilesForStart.data?.profiles?.length ?? 0) > 0;
-  // Code/Plan mode switching is a cloud OpenHands feature — it doesn't apply
+  // Code/Plan mode switching is a cloud Handyst feature — it doesn't apply
   // to ACP conversations (which have no "plan" mode), so hide it when ACP.
   const showChangeAgentButton = isCloud && !modelState.isAcpContext;
   const webSocketStatus = useUnifiedWebSocketStatus();

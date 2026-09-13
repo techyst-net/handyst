@@ -101,7 +101,7 @@ in step 4.
 > through an extension or a compromised asset, can read the canvas's
 > `localStorage`, which holds the SESSION API key of _every_ backend registered
 > in that browser. Tracked in
-> [#16492](https://github.com/OpenHands/OpenHands/issues/16492).
+> [#16492](https://github.com/Handyst/Handyst/issues/16492).
 
 ## 3. Run Agent Canvas
 

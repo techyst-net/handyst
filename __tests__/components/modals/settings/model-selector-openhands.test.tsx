@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ModelSelector } from "#/components/shared/modals/settings/model-selector";
 import { server } from "#/mocks/node";
 
-describe("ModelSelector — OpenHands provider display", () => {
+describe("ModelSelector — Handyst provider display", () => {
   let providersCount = 0;
   let verifiedCount = 0;
   let modelsCount = 0;
@@ -55,11 +55,11 @@ describe("ModelSelector — OpenHands provider display", () => {
     );
   }
 
-  it("shows OpenHands immediately for current openhands/<m> settings", async () => {
+  it("shows Handyst immediately for current openhands/<m> settings", async () => {
     renderWithQuery(<ModelSelector currentModel="openhands/claude-opus-4-7" />);
 
     await waitFor(() => {
-      expect(screen.getByLabelText("LLM$PROVIDER")).toHaveValue("OpenHands");
+      expect(screen.getByLabelText("LLM$PROVIDER")).toHaveValue("Handyst");
     });
 
     expect(providersCount).toBe(1);
@@ -67,7 +67,7 @@ describe("ModelSelector — OpenHands provider display", () => {
     expect(modelsCount).toBe(1);
   });
 
-  it("makes clear which OpenHands models are free", async () => {
+  it("makes clear which Handyst models are free", async () => {
     const user = userEvent.setup();
     renderWithQuery(<ModelSelector currentModel="openhands/deepseek-v4-flash" />);
 

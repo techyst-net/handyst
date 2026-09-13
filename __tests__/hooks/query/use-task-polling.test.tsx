@@ -115,12 +115,12 @@ describe("useTaskPolling", () => {
     vi.mocked(AgentServerConversationService.getStartTask).mockResolvedValue({
       ...readyTask,
       request: {
-        selected_repository: "OpenHands/agent-canvas",
+        selected_repository: "Handyst/agent-canvas",
         selected_branch: "main",
         git_provider: "github",
         plugins: [
           {
-            source: "github:OpenHands/extensions",
+            source: "github:Handyst/extensions",
             ref: "v1",
             repo_path: "plugins/weather",
             parameters: { apiKey: "secret" },
@@ -140,12 +140,12 @@ describe("useTaskPolling", () => {
       );
     });
     expect(getStoredConversationMetadata("conversation-1")).toEqual({
-      selected_repository: "OpenHands/agent-canvas",
+      selected_repository: "Handyst/agent-canvas",
       selected_branch: "main",
       git_provider: "github",
       plugins: [
         {
-          source: "github:OpenHands/extensions",
+          source: "github:Handyst/extensions",
           ref: "v1",
           repo_path: "plugins/weather",
         },

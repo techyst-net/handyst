@@ -482,7 +482,7 @@ export async function ensureMockLLMProfile(
     await ensureMockLLMAgentProfile(page.request, profileName);
   } catch {
     // The target LLM profile may not exist yet on clean state. In that case the
-    // default agent is already OpenHands, so the LLM settings route stays usable.
+    // default agent is already Handyst, so the LLM settings route stays usable.
   }
   await page.goto("/settings/llm", { waitUntil: "domcontentloaded" });
   await dismissAnalyticsModal(page);
@@ -545,7 +545,7 @@ export async function ensureMockLLMAgentProfile(
     `${BACKEND_URL}/api/agent-profiles/${encodeURIComponent(name)}`,
     {
       headers,
-      // disabled_skills omitted: an OpenHands profile launches with all
+      // disabled_skills omitted: an Handyst profile launches with all
       // discovered skills by default (an empty deny-list) — software-agent-sdk#4017.
       data: {
         agent_kind: "openhands",
@@ -812,13 +812,13 @@ export async function openAgentProfileEditor(page: Page, profileName: string) {
 }
 
 /**
- * Reset agent type back to OpenHands through the Settings → Agent profiles UI.
+ * Reset agent type back to Handyst through the Settings → Agent profiles UI.
  * Used in afterAll cleanup to restore the default agent for subsequent tests.
  */
 export async function resetToOpenHandsAgentViaUI(page: Page) {
   await openAgentProfileEditor(page, "default");
 
-  await selectDropdownOption(page, /Agent/, /OpenHands/);
+  await selectDropdownOption(page, /Agent/, /Handyst/);
 
   // The LLM-profile selector only appears for openhands-kind profiles, and
   // is required to save — pick one if the switch left it unset.
@@ -1025,6 +1025,6 @@ export async function resetToOpenHandsAgent(request: APIRequestContext) {
     },
   });
   if (!resp.ok()) {
-    console.warn(`[cleanup] Reset to OpenHands failed: ${resp.status()}`);
+    console.warn(`[cleanup] Reset to Handyst failed: ${resp.status()}`);
   }
 }

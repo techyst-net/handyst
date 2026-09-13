@@ -12,9 +12,9 @@ Docker.
 
 This repository contains the Agent Canvas frontend and local-stack orchestration. Use the sibling repositories for their owned layers:
 
-- [`OpenHands/software-agent-sdk`](https://github.com/OpenHands/software-agent-sdk) owns the Python SDK, Agent Server, agent/tool behavior, conversations, workspaces, events, and server API.
-- [`OpenHands/typescript-client`](https://github.com/OpenHands/typescript-client) owns browser-compatible typed access to that Agent Server API. Add client methods there rather than reimplementing API calls in Canvas.
-- [`OpenHands/extensions`](https://github.com/OpenHands/extensions) owns reusable skills, plugins, automations, and integrations; [`OpenHands/automation`](https://github.com/OpenHands/automation) owns automation definitions, scheduling, webhooks, run history, and dispatching; Agent Server/SDK code executes the dispatched conversations.
+- [`Handyst/software-agent-sdk`](https://github.com/Handyst/software-agent-sdk) owns the Python SDK, Agent Server, agent/tool behavior, conversations, workspaces, events, and server API.
+- [`Handyst/typescript-client`](https://github.com/Handyst/typescript-client) owns browser-compatible typed access to that Agent Server API. Add client methods there rather than reimplementing API calls in Canvas.
+- [`Handyst/extensions`](https://github.com/Handyst/extensions) owns reusable skills, plugins, automations, and integrations; [`Handyst/automation`](https://github.com/Handyst/automation) owns automation definitions, scheduling, webhooks, run history, and dispatching; Agent Server/SDK code executes the dispatched conversations.
 
 When a feature crosses repositories, implement the backend contract in the SDK first, expose it through `typescript-client`, and consume it in Canvas. Coordinate automation lifecycle changes in `automation`. See the repository [contributor notes](../AGENTS.md) and follow the [custom code-review guide](../.agents/skills/custom-codereview-guide.md) for every pull request.
 
@@ -40,7 +40,7 @@ conversation persistence by setting separate `OH_CONVERSATIONS_PATH`,
 `OH_BASH_EVENTS_DIR`, and `OH_VSCODE_PORT` values under `.openhands-dev/`, and
 keeps its tmux sockets under `~/.openhands/agent-canvas/tmux` (via
 `TMUX_TMPDIR`), so it does not collide with other local or cloud-backed
-OpenHands sessions. If `$HOME` is on a filesystem that does not support Unix
+Handyst sessions. If `$HOME` is on a filesystem that does not support Unix
 domain sockets (some devcontainers, NFS/CIFS homes), set the standard
 `TMUX_TMPDIR` env var to a local path such as `/tmp` and the dev stack will use
 it instead.
@@ -161,7 +161,7 @@ would need a Python test harness and Python-specific mutation tool.
 
 ## CSS isolation and host-app customization
 
-The standalone app and the exported provider/root wrapper now scope all bundled CSS under a dedicated shell element with the `data-agent-server-ui` attribute. That means Tailwind utilities, HeroUI component styles, xterm styles, and local CSS only apply inside the OpenHands UI subtree instead of leaking into a host app.
+The standalone app and the exported provider/root wrapper now scope all bundled CSS under a dedicated shell element with the `data-agent-server-ui` attribute. That means Tailwind utilities, HeroUI component styles, xterm styles, and local CSS only apply inside the Handyst UI subtree instead of leaking into a host app.
 
 ### Embedding strategy
 

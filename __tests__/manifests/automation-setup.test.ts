@@ -60,7 +60,7 @@ const SETUP_COMMANDS: Record<string, string> = {
 };
 
 /**
- * The reference fixtures `OpenHands/extensions` publishes with its catalog.
+ * The reference fixtures `Handyst/extensions` publishes with its catalog.
  * Their request bodies were verified against the live service, and the create
  * model forbids extra keys, so any divergence between the host's derivation
  * and a fixture is a 422 in production rather than a cosmetic difference.
@@ -245,11 +245,11 @@ describe("buildCreatePayload", () => {
 
     // Act
     const payload = buildCreatePayload(entry, {
-      repositories: ["OpenHands/automation"],
+      repositories: ["Handyst/automation"],
     });
 
     // Assert
-    expect(payload?.name).toBe(`${entry.name} - OpenHands/automation`);
+    expect(payload?.name).toBe(`${entry.name} - Handyst/automation`);
   });
 
   it("names an automation watching several through the host's translations", () => {
@@ -270,7 +270,7 @@ describe("buildCreatePayload", () => {
 
     // Act
     const payload = buildCreatePayload(entry, {
-      repository: ["OpenHands/automation", "OpenHands/extensions"],
+      repository: ["Handyst/automation", "Handyst/extensions"],
       widgetName: "Widgets",
     });
 

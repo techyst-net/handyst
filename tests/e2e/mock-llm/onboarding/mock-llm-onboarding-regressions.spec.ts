@@ -106,7 +106,7 @@ test.describe("onboarding recent regressions", () => {
     });
     await expect(
       page.getByTestId("openhands-account-help"),
-      "OpenHands account helper should be hidden for OpenAI defaults",
+      "Handyst account helper should be hidden for OpenAI defaults",
     ).toBeHidden();
   });
 });

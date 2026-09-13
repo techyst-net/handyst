@@ -168,7 +168,7 @@ describe("useNewConversationCommand", () => {
     await result.current.mutateAsync();
 
     await waitFor(() => {
-      // Format matches OpenHands' cloud pattern: useTaskPolling unwraps
+      // Format matches Handyst' cloud pattern: useTaskPolling unwraps
       // `task-{uuid}` and polls until READY, then redirects.
       expect(mockNavigate).toHaveBeenCalledWith("/conversations/task-task-789");
     });

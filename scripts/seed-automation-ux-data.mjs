@@ -391,7 +391,7 @@ const SEEDS = [
   {
     name: "Review Comment Resolver",
     prompt:
-      "When a reviewer leaves a comment containing '@openhands please fix', apply the requested change and reply with a summary of the edit.",
+      "When a reviewer leaves a comment containing '@techyst please fix', apply the requested change and reply with a summary of the edit.",
     model: "review-fast",
     timeout: 1500,
     enabled: true,
@@ -400,7 +400,7 @@ const SEEDS = [
       type: "event",
       source: "github",
       on: "pull_request_review_comment.created",
-      filter: "icontains(comment.body, '@openhands please fix')",
+      filter: "icontains(comment.body, '@techyst please fix')",
     },
     lastTriggeredHoursAgo: 7,
     runs: [

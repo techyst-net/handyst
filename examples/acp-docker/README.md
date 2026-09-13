@@ -40,7 +40,7 @@ cd examples/acp-docker && docker compose up
 To pin a newer release or a current main build by hand instead:
 
 ```bash
-AGENT_SERVER_IMAGE=ghcr.io/openhands/agent-server:$(gh api repos/OpenHands/software-agent-sdk/commits/main --jq '.sha[0:7]')-python docker compose up
+AGENT_SERVER_IMAGE=ghcr.io/openhands/agent-server:$(gh api repos/Handyst/software-agent-sdk/commits/main --jq '.sha[0:7]')-python docker compose up
 ```
 
 To bake credentials into the container instead of entering them in Canvas, copy

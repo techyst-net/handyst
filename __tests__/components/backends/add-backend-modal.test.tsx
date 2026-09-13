@@ -106,7 +106,7 @@ afterEach(() => {
 });
 
 describe("AddBackendModal – connection chooser", () => {
-  it("renders OpenHands Cloud first with its brand mark", () => {
+  it("renders Handyst Cloud first with its brand mark", () => {
     renderWithProviders(<AddBackendModal onClose={vi.fn()} />);
 
     const tabs = screen.getAllByRole("tab");

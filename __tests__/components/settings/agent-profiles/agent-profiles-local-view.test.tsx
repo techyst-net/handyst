@@ -127,7 +127,7 @@ describe("AgentProfilesLocalView save mapping", () => {
     };
   });
 
-  it("saves an OpenHands profile with the selected llm_profile_ref", async () => {
+  it("saves an Handyst profile with the selected llm_profile_ref", async () => {
     emitControl = {
       agentType: "openhands",
       isValid: true,
@@ -430,7 +430,7 @@ describe("AgentProfilesLocalView save mapping", () => {
     expect(screen.getByTestId("save-agent-profile-btn")).toBeDisabled();
   });
 
-  it("blocks an OpenHands save when no LLM profile is available", async () => {
+  it("blocks an Handyst save when no LLM profile is available", async () => {
     llmProfilesData = { profiles: [], active_profile: null };
     emitControl = {
       agentType: "openhands",
